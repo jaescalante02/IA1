@@ -88,30 +88,3 @@ vector<unsigned long long> next(unsigned long long state){
 
 	return ret;
 }
-
-
-int main(){
-
-	precalcManhattan(4);
-	makeGoal();
-	unsigned long long tmp = 0ULL;
-
-	for(unsigned long long i=0ULL;i<16ULL;i++) tmp += (i<<(4*i));
-	cout << isGoal(tmp) << endl;	
-	tmp-=(7ULL<<28);
-	tmp+=7;
-	manhattan(tmp);
-	/*imprimir(tmp);
-	*/
-	vector<unsigned long long> bla = next(tmp);
-	/*
-	for(int i=0;i<bla.size();i++){
-		imprimir(bla[i]);
-		cout << endl;
-	}
-	*/
-	
-
-	
-	return 0;
-}
