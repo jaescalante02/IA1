@@ -51,7 +51,7 @@ int A_Star(unsigned long long r){
  
 }
 
-pair<int,bool> depthSearch(unsigned long long node, int nodeCost, int cost_limit){
+pair<int,bool> depthSearch(unsigned long long node, int nodeCost, int cost_limit, unsigned long long parent){
   int minimumCost = manhattan(node) + nodeCost;
   if (minimumCost > cost_limit){
     return make_pair(minimumCost,false);
@@ -63,7 +63,10 @@ pair<int,bool> depthSearch(unsigned long long node, int nodeCost, int cost_limit
   pair<int,bool> t;
   vector<unsigned long long> nextStates = next(node);
   for (vector<unsigned long long>::iterator it = nextStates.begin() ; it != nextStates.end(); ++it){
-    t = depthSearch(*it, nodeCost + 1, cost_limit);
+    if (*it == parent){
+      continue;
+    }
+    t = depthSearch(*it, nodeCost + 1, cost_limit,node);
     if (t.second){
       return make_pair(t.first,true);
     }
@@ -71,7 +74,7 @@ pair<int,bool> depthSearch(unsigned long long node, int nodeCost, int cost_limit
       min = t.first;
     }
   }  
-  return make_pair(t.first,false);
+  return make_pair(min,false);
 } 
 
 int IDA_Star(unsigned long long r){
@@ -80,7 +83,7 @@ int IDA_Star(unsigned long long r){
 
   int cost_limit = manhattan(r);
   while (cost_limit != numeric_limits<int>::max()){
-    t =  depthSearch(r,0,cost_limit);
+    t =  depthSearch(r,0,cost_limit,r);
     if (t.second){
       return t.first;
     }
