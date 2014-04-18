@@ -33,14 +33,14 @@ int A_Star(unsigned long long r){
     if (isGoal(n.second)){
       return n.first;
     }
-    closed.insert(make_pair(0,true)); 
+    closed.insert(make_pair(n.first,true)); 
    
     nextStates = next(n.second);
     for (vector<unsigned long long>::iterator it = nextStates.begin() ; it != nextStates.end(); ++it){
       if (closed.find(*it) != closed.end()) {
         continue;
       }
-      value = manhattan(*it) + n.first;
+      value = manhattan(*it) + n.first + 1;
       open.push(make_pair(value,*it));
     }  
   }
@@ -93,10 +93,19 @@ int IDA_Star(unsigned long long r){
  
  
 int main(){
- 
-  int z = IDA_Star(42432432432UL);
-  cout << z;
+
+  unsigned long long z1 = 81985529216486895ULL;
+  unsigned long long z2 = 1162849439785405935ULL; 
+  imprimir(z2);
+  makeGoal();
   
+  precalcManhattan(4);
+ 
+  int a = A_Star(z2);
+  int ida = IDA_Star(z2);
+  
+  cout << "Costo al goal es " <<  a << "\n";
+  cout << "Costo al goal es " <<  ida << "\n";
   
 }
 
