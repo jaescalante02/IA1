@@ -1,11 +1,16 @@
+#include<iostream>
 #include <stdio.h>
 #include <sys/types.h>
 #include <unistd.h>
 #include <stdlib.h>
+#include "heuristics.h"
 
-unsigned long int goal;
+using namespace std;
 
-bool isSolvable(char state[]){
+
+//unsigned long long int goal;
+
+bool isSolvable(unsigned long long state[]){
 
   int i=0, j=0;
   int res = 0;
@@ -31,24 +36,41 @@ bool isSolvable(char state[]){
 
 }
 
+unsigned long long toState(unsigned long long int state[]){
+
+  unsigned long long st = 0ULL;
+
+  for(int i=0;i<15;i++){
+
+    st+= state[i]<<(4*(15-i));
+
+  }
+
+  return st;
+
+}
+
+
 int main(int argc, char *argv[]){
 
 
-  char initstate[16];
+  unsigned long long initstate[16];
+  unsigned long long st = 0ULL;
 
 	precalcManhattan(4);
 	makeGoal();
 
   for(int i=0;i<16;i++){
 
-    scanf("%d",&initstate[i]);
+    cin >> initstate[i];
     if(initstate[i]==16) return 1;
 
   }
 
   isSolvable(initstate);
 
-  //initstate to unsigned longlong int
+  st = toState(initstate);
+ 
 
 }
 

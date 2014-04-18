@@ -96,13 +96,14 @@ int main(){
 
   unsigned long long z1 = 81985529216486895ULL;
   unsigned long long z2 = 1162849439785405935ULL; 
-  imprimir(z2);
+  unsigned long long z3 = 1297957428606520815ULL; 
+  imprimir(z3);
   makeGoal();
   
   precalcManhattan(4);
  
-  int a = A_Star(z2);
-  int ida = IDA_Star(z2);
+  int a = A_Star(z3);
+  int ida = IDA_Star(z3);
   
   cout << "Costo al goal es " <<  a << "\n";
   cout << "Costo al goal es " <<  ida << "\n";
