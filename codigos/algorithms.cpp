@@ -26,13 +26,15 @@ int A_Star(unsigned long long r){
   nodeType n;
   vector<unsigned long long> nextStates;
   int value;
+  int pathLength = 0; 
   
   while (!open.empty()){
     n = open.top();
     open.pop();
     if (isGoal(n.second)){
-      return n.first;
+      return pathLength;
     }
+    pathLength++;
     closed.insert(make_pair(n.first,true)); 
    
     nextStates = next(n.second);
@@ -55,7 +57,7 @@ pair<int,bool> depthSearch(unsigned long long node, int nodeCost, int cost_limit
     return make_pair(minimumCost,false);
   }
   if (isGoal(node)) {
-    return make_pair(minimumCost,true);
+    return make_pair(nodeCost,true);
   }
   int min = numeric_limits<int>::max();
   pair<int,bool> t;
@@ -63,7 +65,7 @@ pair<int,bool> depthSearch(unsigned long long node, int nodeCost, int cost_limit
   for (vector<unsigned long long>::iterator it = nextStates.begin() ; it != nextStates.end(); ++it){
     t = depthSearch(*it, nodeCost + 1, cost_limit);
     if (t.second){
-      return make_pair(nodeCost+1,true);
+      return make_pair(t.first,true);
     }
     if (t.first < min){
       min = t.first;
@@ -97,15 +99,14 @@ int main(){
   unsigned long long z1 = 81985529216486895ULL;
   unsigned long long z2 = 1162849439785405935ULL; 
   unsigned long long z3 = 1297957428606520815ULL; 
-  imprimir(z3);
-  makeGoal();
   
   precalcManhattan(4);
- 
+  makeGoal();
+  imprimir(z3);
   int a = A_Star(z3);
   int ida = IDA_Star(z3);
   
-  cout << "Costo al goal es " <<  a << "\n";
+  cout << "\nCosto al goal es " <<  a << "\n";
   cout << "Costo al goal es " <<  ida << "\n";
   
 }
