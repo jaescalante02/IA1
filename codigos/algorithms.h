@@ -14,7 +14,7 @@ using namespace std;
 class ComparePair{
 public:
   bool operator()(pair<int,unsigned long long> n1,pair<int,unsigned long long> n2){
-    return n1.first>n2.first;
+    return (n1.first + manhattan(n1.second)) > (n2.first + manhattan(n2.second));
   }
 };
 
@@ -29,16 +29,13 @@ int A_Star(unsigned long long r){
   
   nodeType n;
   vector<unsigned long long> nextStates;
-  int value;
-  int pathLength = 0; 
   
   while (!open.empty()){
     n = open.top();
     open.pop();
     if (isGoal(n.second)){
-      return pathLength;
+      return n.first;
     }
-    pathLength++;
     closed.insert(make_pair(n.first,true)); 
    
     nextStates = next(n.second);
@@ -46,8 +43,7 @@ int A_Star(unsigned long long r){
       if (closed.find(*it) != closed.end()) {
         continue;
       }
-      value = manhattan(*it) + n.first + 1;
-      open.push(make_pair(value,*it));
+      open.push(make_pair(n.first+1,*it));
     }  
   }
   
