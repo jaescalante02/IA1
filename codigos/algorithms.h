@@ -8,6 +8,7 @@
 #include <unordered_map>
 #include <limits>
 #include "heuristics.h"
+#include "codigoHash.h"
 
 using namespace std;
 
@@ -24,7 +25,9 @@ typedef pair<int,unsigned long long> nodeType;
 int A_Star(unsigned long long r){
    
   priority_queue<nodeType,vector<nodeType>,ComparePair> open;
-  ullmap closed; //replace with hash table
+  limpiar();
+
+
   open.push(make_pair(0,r));
   
   nodeType n;
@@ -36,13 +39,13 @@ int A_Star(unsigned long long r){
     if (isGoal(n.second)){
       return n.first;
     }
-    closed.insert(make_pair(n.first,true)); 
+    insertar(n.second); 
    
     nextStates = next(n.second);
     for (vector<unsigned long long>::iterator it = nextStates.begin() ; it != nextStates.end(); ++it){
-      if (closed.find(*it) != closed.end()) {
+      if (cerrado(n.second)) 
         continue;
-      }
+      
       open.push(make_pair(n.first+1,*it));
     }  
   }

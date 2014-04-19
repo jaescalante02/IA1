@@ -1,6 +1,6 @@
 all: solver
 
-solver: solver.cpp algorithms.h heuristics.h
+solver: solver.cpp algorithms.h heuristics.h codigoHash.h
 	g++ -std=gnu++0x solver.cpp -o solver
 	
 clean:	
