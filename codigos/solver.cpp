@@ -3,7 +3,7 @@
 #include <sys/types.h>
 #include <unistd.h>
 #include <stdlib.h>
-#include "heuristics.h"
+#include "algorithms.h"
 
 using namespace std;
 
@@ -40,7 +40,7 @@ unsigned long long toState(unsigned long long int state[]){
 
   unsigned long long st = 0ULL;
 
-  for(int i=0;i<15;i++){
+  for(int i=0;i<16;i++){
 
     st+= state[i]<<(4*(15-i));
 
@@ -59,18 +59,34 @@ int main(int argc, char *argv[]){
 
 	precalcManhattan(4);
 	makeGoal();
+	int a=0, ida=0;
 
-  for(int i=0;i<16;i++){
+  while(true){
 
-    cin >> initstate[i];
-    if(initstate[i]==16) return 1;
+    for(int i=0;i<16;i++){
 
-  }
+      cin >> initstate[i];
+      if(initstate[i]==16ULL) return 1;
 
-  isSolvable(initstate);
+    }
 
-  st = toState(initstate);
- 
+    if(isSolvable(initstate)){
+      
+      st = toState(initstate);
+      cout << st << endl;
+      a  = A_Star(st);
+      ida = IDA_Star(st);
+  
+      imprimir(st);
+
+      cout << "\nCosto al goal es " <<  a << "\n";
+      cout << "Costo al goal es " <<  ida << "\n";
+      
+    }  
+
+    
+    
+  } 
 
 }
 

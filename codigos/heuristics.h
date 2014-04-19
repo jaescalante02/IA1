@@ -1,3 +1,7 @@
+
+#ifndef IA_HEURISTICS
+#define IA_HEURISTICS
+
 #include<iostream>
 #include<vector>
 #include<algorithm>
@@ -8,7 +12,7 @@ using namespace std;
 //matriz para el precalculo del costo de manhattan
 int costo[25][25];
 
-//Este long long tendra el valor del goal
+//Este long long tendra el valor del goal 
 unsigned long long goal;
 
 
@@ -88,3 +92,6 @@ vector<unsigned long long> next(unsigned long long state){
 
 	return ret;
 }
+
+
+#endif

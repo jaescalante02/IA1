@@ -1,3 +1,7 @@
+
+#ifndef IA_ALGORITHMS
+#define IA_ALGORITHMS
+
 #include<iostream>
 #include<queue>
 #include<utility>
@@ -96,7 +100,7 @@ int IDA_Star(unsigned long long r){
 
 
  
- 
+/*
 int main(){
 
   unsigned long long z1 = 81985529216486895ULL;
@@ -113,12 +117,12 @@ int main(){
   cout << "Costo al goal es " <<  ida << "\n";
   
 }
+*/
 
 
 
 
-
-
+#endif
 
 
 
