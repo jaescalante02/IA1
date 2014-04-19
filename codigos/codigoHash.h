@@ -46,7 +46,7 @@ int hashea(unsigned long long st){
 //verifica si un estado ya ha sido cerrado
 bool cerrado(unsigned long long st){
 	int v = hashea(st);
-	return tabla[v].count(st)==1;
+	return tabla[v].count(st);
 }
 
 

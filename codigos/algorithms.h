@@ -43,9 +43,8 @@ int A_Star(unsigned long long r){
    
     nextStates = next(n.second);
     for (vector<unsigned long long>::iterator it = nextStates.begin() ; it != nextStates.end(); ++it){
-      if (cerrado(n.second)) 
+      if (cerrado(*it)) 
         continue;
-      
       open.push(make_pair(n.first+1,*it));
     }  
   }
