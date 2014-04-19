@@ -3,6 +3,7 @@
 #include <sys/types.h>
 #include <unistd.h>
 #include <stdlib.h>
+#include <time.h>
 #include "algorithms.h"
 
 using namespace std;
@@ -56,6 +57,7 @@ int main(int argc, char *argv[]){
 
   unsigned long long initstate[16];
   unsigned long long st = 0ULL;
+  clock_t atime, idatime;
 
 	precalcManhattan(4);
 	makeGoal();
@@ -73,14 +75,16 @@ int main(int argc, char *argv[]){
     if(isSolvable(initstate)){
       
       st = toState(initstate);
-      cout << st << endl;
-      a  = A_Star(st);
-      ida = IDA_Star(st);
-  
       imprimir(st);
-
-      cout << "\nCosto al goal es " <<  a << "\n";
-      cout << "Costo al goal es " <<  ida << "\n";
+      atime = clock();
+      a  = A_Star(st);
+      atime = clock()-atime;
+      idatime = clock();
+      ida = IDA_Star(st);
+      idatime = clock() - idatime;
+  
+      cout << "\nA* costo: " <<a<<" time: "<< atime/(double)CLOCKS_PER_SEC << endl;
+      cout << "IDA* costo: " <<ida<<" time: "<< idatime/(double)CLOCKS_PER_SEC <<endl;
       
     }  
 
