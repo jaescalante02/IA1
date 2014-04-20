@@ -53,6 +53,43 @@ void precalcManhattan(const int n){
 }
 
 
+inline int pairwise(unsigned long long state){
+	int ret =0;
+	int mask1,mask2;
+	mask1=mask2=0;
+	for(int i=0;i<16;i++){
+		unsigned long long t = state & (15ULL<<((15-i)*4));
+		t>>= ((15-i)*4);
+		if(t==0) continue;
+		int j;
+		if(t%4==i%4){
+			j=i+4;
+			while(15-j>=0){
+				unsigned long long tmp = state & (15ULL<<((15-j)*4));
+				tmp>>= ((15-j)*4);
+				if(t%4 == tmp%4 && tmp<t && tmp && !(mask2 & 1<<t) && !(mask2 & 1<<tmp))
+					ret+=2,mask2+=(1<<t)+(1<<tmp);
+				j+=4;
+			}
+		}
+
+		j=i+1;
+		if(t/4==i/4)
+			while(j%4){
+				unsigned long long tmp = state & (15ULL<<((15-j)*4));
+				tmp>>= ((15-j)*4);
+				if(t/4 == tmp/4 && tmp<t && tmp && !(mask1 & (1<<t)) && !(mask1 & (1<<tmp)) )
+					ret+=2,mask1+=(1<<t)+(1<<tmp);
+				j++;
+			}
+
+	}
+
+	return ret;
+}
+
+
+
 int manhattan(unsigned long long state){
 	int tot = 0;
 	for(int i=0;i<16;i++){
@@ -61,8 +98,14 @@ int manhattan(unsigned long long state){
 		if (t == 00ULL) continue;
 		tot+=costo[t][i];
 	}
-	return tot;
+	return tot + pairwise(state);
 }
+
+
+
+
+
+
 
 
 inline unsigned long long vecino(unsigned long long state, int ind, int vec, int mov){

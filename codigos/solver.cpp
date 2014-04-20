@@ -77,7 +77,7 @@ int main(int argc, char *argv[]){
       st = toState(initstate);
       imprimir(st);
       atime = clock();
-      a  = A_Star(st);
+     // a  = A_Star(st);
       atime = clock()-atime;
       idatime = clock();
       ida = IDA_Star(st);
