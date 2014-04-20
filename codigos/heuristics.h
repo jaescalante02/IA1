@@ -58,6 +58,7 @@ int manhattan(unsigned long long state){
 	for(int i=0;i<16;i++){
 		unsigned long long t = state & (15ULL<<((15-i)*4));
 		t>>= ((15-i)*4);
+		if (t == 00ULL) continue;
 		tot+=costo[t][i];
 	}
 	return tot;

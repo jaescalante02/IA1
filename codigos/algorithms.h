@@ -7,45 +7,51 @@
 #include<utility>
 #include <unordered_map>
 #include <limits>
+#include <tuple>
 #include "heuristics.h"
 #include "codigoHash.h"
 
 using namespace std;
 
-class ComparePair{
+typedef tuple<int,int,unsigned long long> nodeType2;
+
+class CompareTuple{
 public:
-  bool operator()(pair<int,unsigned long long> n1,pair<int,unsigned long long> n2){
-    return (n1.first + manhattan(n1.second)) > (n2.first + manhattan(n2.second));
+  bool operator()(nodeType2 n1, nodeType2 n2){
+    return get<1>(n1) > get<1>(n2);
   }
 };
 
-typedef unordered_map<unsigned long long,bool> ullmap;
-typedef pair<int,unsigned long long> nodeType;
 
 int A_Star(unsigned long long r){
    
-  priority_queue<nodeType,vector<nodeType>,ComparePair> open;
+  priority_queue<nodeType2,vector<nodeType2>,CompareTuple> open;
   limpiar();
 
 
-  open.push(make_pair(0,r));
+  open.push(make_tuple(0,0,r));
   
-  nodeType n;
+  nodeType2 n;
   vector<unsigned long long> nextStates;
+  int cost;
+  unsigned long long state;
   
   while (!open.empty()){
     n = open.top();
     open.pop();
-    if (isGoal(n.second)){
-      return n.first;
+    cost = get<0>(n);
+    state = get<2>(n);
+     
+    if (isGoal(state)){
+      return cost;
     }
-    insertar(n.second); 
+    insertar(state); 
    
-    nextStates = next(n.second);
+    nextStates = next(state);
     for (vector<unsigned long long>::iterator it = nextStates.begin() ; it != nextStates.end(); ++it){
       if (cerrado(*it)) 
         continue;
-      open.push(make_pair(n.first+1,*it));
+      open.push(make_tuple(cost+1,cost+1+manhattan(*it),*it));
     }  
   }
   
@@ -53,73 +59,56 @@ int A_Star(unsigned long long r){
  
 }
 
-pair<int,bool> depthSearch(unsigned long long node, int nodeCost, int cost_limit, unsigned long long parent){
+
+int depthSearch(unsigned long long node, int nodeCost, int cost_limit, unsigned long long parent, bool &found){
   int minimumCost = manhattan(node) + nodeCost;
   if (minimumCost > cost_limit){
-    return make_pair(minimumCost,false);
+    found = false;
+    return minimumCost;
   }
   if (isGoal(node)) {
-    return make_pair(nodeCost,true);
+    found = true;
+    return nodeCost;
   }
   int min = numeric_limits<int>::max();
-  pair<int,bool> t;
+  int t;
   vector<unsigned long long> nextStates = next(node);
   for (vector<unsigned long long>::iterator it = nextStates.begin() ; it != nextStates.end(); ++it){
     if (*it == parent){
       continue;
     }
-    t = depthSearch(*it, nodeCost + 1, cost_limit,node);
-    if (t.second){
-      return make_pair(t.first,true);
+    t = depthSearch(*it, nodeCost + 1, cost_limit,node,found);
+    if (found){
+      return t;
     }
-    if (t.first < min){
-      min = t.first;
+    if (t < min){
+      min = t;
     }
   }  
-  return make_pair(min,false);
+  found = false;
+  return min;
 } 
 
 int IDA_Star(unsigned long long r){
 
-  pair<int,bool> t;
+  int t;
 
   int cost_limit = manhattan(r);
+  bool found = false; 
+  
   while (cost_limit != numeric_limits<int>::max()){
-    t =  depthSearch(r,0,cost_limit,r);
-    if (t.second){
-      return t.first;
+    t =  depthSearch(r,0,cost_limit,r,found);
+    if (found){
+      return t;
     }
-    if (t.first == numeric_limits<int>::max()){
+    if (t == numeric_limits<int>::max()){
       return -1;
     }
-    cost_limit = t.first;
+    cost_limit = t;
   }  
 }
 
-
  
-/*
-int main(){
-
-  unsigned long long z1 = 81985529216486895ULL;
-  unsigned long long z2 = 1162849439785405935ULL; 
-  unsigned long long z3 = 1297957428606520815ULL; 
-  
-  precalcManhattan(4);
-  makeGoal();
-  imprimir(z3);
-  int a = A_Star(z3);
-  int ida = IDA_Star(z3);
-  
-  cout << "\nCosto al goal es " <<  a << "\n";
-  cout << "Costo al goal es " <<  ida << "\n";
-  
-}
-*/
-
-
-
-
 #endif
 
 
