@@ -97,6 +97,7 @@ int IDA_Star(unsigned long long r){
   bool found = false; 
   
   while (cost_limit != numeric_limits<int>::max()){
+    cout << cost_limit<<" ";
     t =  depthSearch(r,0,cost_limit,r,found);
     if (found){
       return t;
@@ -106,6 +107,7 @@ int IDA_Star(unsigned long long r){
     }
     cost_limit = t;
   }  
+  cout<<endl;
 }
 
  

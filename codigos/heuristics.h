@@ -10,7 +10,7 @@
 using namespace std;
 
 //matriz para el precalculo del costo de manhattan
-int costo[25][25];
+int costo[16][16];
 
 //Este long long tendra el valor del goal 
 unsigned long long goal;
