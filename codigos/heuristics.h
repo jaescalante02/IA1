@@ -151,7 +151,7 @@ int manhattan_init(NODO state){
 
 inline int manhattan(NODO st){
 
-  return st.cost ;//+ pairwise(st);
+  return st.cost + pairwise(st);
 
 }
 
@@ -250,10 +250,10 @@ list<NODO> next(NODO state){
   
 	if(pos % 4 != 3)
 		right(&ret,state, pos+1);
-	if(pos % 4)
-		left(&ret,state, pos-1);
 	if(pos<12)
 		down(&ret,state, pos+4);		
+	if(pos % 4)
+		left(&ret,state, pos-1);		
 	if(pos>3)
 		up(&ret,state, pos-4);
 
