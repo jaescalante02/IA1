@@ -1,4 +1,3 @@
-
 #ifndef IA_ALGORITHMS
 #define IA_ALGORITHMS
 
@@ -13,7 +12,7 @@
 
 using namespace std;
 
-typedef tuple<int,int,unsigned long long> nodeType2;
+typedef tuple<int,int,NODO> nodeType2;
 
 class CompareTuple{
 public:
@@ -23,7 +22,7 @@ public:
 };
 
 
-int A_Star(unsigned long long r){
+int A_Star(NODO r){
    
   priority_queue<nodeType2,vector<nodeType2>,CompareTuple> open;
   limpiar();
@@ -32,9 +31,9 @@ int A_Star(unsigned long long r){
   open.push(make_tuple(0,0,r));
   
   nodeType2 n;
-  vector<unsigned long long> nextStates;
+  list<NODO> nextStates;
   int cost;
-  unsigned long long state;
+  NODO state;
   
   while (!open.empty()){
     n = open.top();
@@ -45,11 +44,11 @@ int A_Star(unsigned long long r){
     if (isGoal(state)){
       return cost;
     }
-    insertar(state); 
+    insertar(state.state); 
    
     nextStates = next(state);
-    for (vector<unsigned long long>::iterator it = nextStates.begin() ; it != nextStates.end(); ++it){
-      if (cerrado(*it)) 
+    for (list<NODO>::iterator it = nextStates.begin() ; it != nextStates.end(); ++it){
+      if (cerrado(it->state)) 
         continue;
       open.push(make_tuple(cost+1,cost+1+manhattan(*it),*it));
     }  
@@ -60,7 +59,7 @@ int A_Star(unsigned long long r){
 }
 
 
-int depthSearch(unsigned long long node, int nodeCost, int cost_limit, unsigned long long parent, bool &found){
+int depthSearch(NODO node, int nodeCost, int cost_limit, NODO parent, bool &found){
   int minimumCost = manhattan(node) + nodeCost;
   if (minimumCost > cost_limit){
     found = false;
@@ -72,9 +71,9 @@ int depthSearch(unsigned long long node, int nodeCost, int cost_limit, unsigned 
   }
   int min = numeric_limits<int>::max();
   int t;
-  vector<unsigned long long> nextStates = next(node);
-  for (vector<unsigned long long>::iterator it = nextStates.begin() ; it != nextStates.end(); ++it){
-    if (*it == parent){
+  list<NODO> nextStates = next(node);
+  for (list<NODO>::iterator it = nextStates.begin() ; it != nextStates.end(); ++it){
+    if (it->state == parent.state){
       continue;
     }
     t = depthSearch(*it, nodeCost + 1, cost_limit,node,found);
@@ -89,7 +88,7 @@ int depthSearch(unsigned long long node, int nodeCost, int cost_limit, unsigned 
   return min;
 } 
 
-int IDA_Star(unsigned long long r){
+int IDA_Star(NODO r){
 
   int t;
 
@@ -112,6 +111,4 @@ int IDA_Star(unsigned long long r){
 
  
 #endif
-
-
 
