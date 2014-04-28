@@ -21,6 +21,12 @@ public:
   }
 };
 
+unsigned long long generated = 0;
+
+
+unsigned long long gen() {return generated;}
+void genclean() {generated=0;}
+
 
 int A_Star(NODO r){
    
@@ -51,6 +57,7 @@ int A_Star(NODO r){
       if (cerrado(it->state)) 
         continue;
       open.push(make_tuple(cost+1,cost+1+manhattan(*it),*it));
+      
     }  
   }
   
@@ -73,10 +80,8 @@ int depthSearch(NODO node, int nodeCost, int cost_limit, NODO parent, bool &foun
   int t;
   list<NODO> nextStates = next(node);
   for (list<NODO>::iterator it = nextStates.begin() ; it != nextStates.end(); ++it){
-    if (it->state == parent.state){
-      continue;
-    }
-    t = depthSearch(*it, nodeCost + 1, cost_limit,node,found);
+    generated++;
+    t = depthSearch(*it, nodeCost + 1, cost_limit, node, found);
     if (found){
       return t;
     }

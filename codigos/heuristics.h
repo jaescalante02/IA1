@@ -25,6 +25,7 @@ typedef struct node{
 unsigned long long int state;
 unsigned char extra;
 unsigned char cost;
+unsigned char typeson;
 } NODO;
 
 #pragma pack()
@@ -151,7 +152,7 @@ int manhattan_init(NODO state){
 
 inline int manhattan(NODO st){
 
-  return st.cost + pairwise(st);
+  return st.cost ;//+ pairwise(st);
 
 }
 
@@ -184,6 +185,7 @@ inline void left(list<NODO>* ret, NODO st, int vecino){
   n.cost = st.cost -costo[tmp3][vecino]+costo[tmp3][st.extra];
   n.state = tmp2 | tmp;
   n.extra = vecino;
+  n.typeson = 1ULL;
   //cout<<(unsigned int)st.cost<<"left n "<<(unsigned int) n.cost <<(unsigned int)costo[tmp3][vecino]<<"despues"<<(unsigned int)costo[tmp3][st.extra]<<endl;
   //imprimir(n);
   //exit(0);
@@ -202,6 +204,7 @@ inline void right(list<NODO>* ret, NODO st, int vecino){
   n.cost = st.cost - costo[tmp3][vecino]+costo[tmp3][st.extra];
   n.state = tmp2 | tmp;
   n.extra = vecino;
+    n.typeson = 2ULL;
   //imprimir(n);
   if(n.cost<st.cost) ret->push_front(n);
   else ret->push_back(n);
@@ -220,6 +223,7 @@ inline void up(list<NODO>* ret, NODO st, int vecino){
   //cout<<(unsigned int)st.cost<<"up n "<<(unsigned int) n.cost <<endl;
   n.state = tmp2 | tmp;
   n.extra = vecino;
+  n.typeson = 3ULL;
   //imprimir(n);
   if(n.cost<st.cost) ret->push_front(n);
   else ret->push_back(n);
@@ -237,6 +241,7 @@ inline void down(list<NODO>* ret, NODO st, int vecino){
   n.cost = st.cost -costo[tmp3][vecino]+costo[tmp3][st.extra];
   n.state = tmp2 | tmp;
   n.extra = vecino;
+  n.typeson = 4ULL;
   //imprimir(n);
   if(n.cost<st.cost) ret->push_front(n);
   else ret->push_back(n);
@@ -248,13 +253,13 @@ list<NODO> next(NODO state){
 	//cout<<"poss"<<pos<<state.state<<endl;
 	list<NODO> ret;
   
-	if(pos % 4 != 3)
+	if((state.typeson-1ULL)&&(pos % 4 != 3))
 		right(&ret,state, pos+1);
-	if(pos<12)
+	if((state.typeson-3ULL)&&(pos<12))
 		down(&ret,state, pos+4);		
-	if(pos % 4)
+	if((state.typeson-2ULL)&&(pos % 4))
 		left(&ret,state, pos-1);		
-	if(pos>3)
+	if((state.typeson-4ULL)&&(pos>3))
 		up(&ret,state, pos-4);
 
 	return ret;

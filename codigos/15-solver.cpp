@@ -50,6 +50,7 @@ NODO toState(unsigned long long int state[]){
   }
   
  st.cost = manhattan_init(st);
+ st.typeson = 5ULL;
  // cout<<(unsigned int) st.extra<<endl;
   
   return st;
@@ -85,15 +86,18 @@ int main(int argc, char *argv[]){
       //return 1;
       imprimir(st);
       atime = clock();
-      //a  = A_Star(st);
+      a  = A_Star(st);
       atime = clock()-atime;
       idatime = clock();
-      ida = IDA_Star(st);
+      //ida = IDA_Star(st);
       idatime = clock() - idatime;
   
       cout << "\nA* costo: " <<a<<" time: "<< atime/(double)CLOCKS_PER_SEC << endl;
-      cout << "IDA* costo: " <<ida<<" time: "<< idatime/(double)CLOCKS_PER_SEC <<endl;
+      cout << "IDA* costo: " <<ida<<" time: "<< idatime/(double)CLOCKS_PER_SEC<<endl<<
+      "Generados "<<gen()<<" nodos ->"<<gen()/(idatime/(double)CLOCKS_PER_SEC)<<endl;
       
+      genclean();
+
     }  
 
   //  cout << "IDA* costo: " <<ida<<" sizeof: "<< sizeof(NODO)<<endl;
