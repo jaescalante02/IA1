@@ -40,9 +40,9 @@ inline int valPos(node &n,int pos){
 	return (int)tmp;
 }
 
-inline void imprimir(node &n){
+inline void imprimir(node &n,char c){
 	for(int i=0;i<25;i++){
-		if(i%5==0) cout << endl;
+		if(i%5==0) cout << c;
 		if(valPos(n,i)<10) cout<<"0";
 		cout << valPos(n,i) << " ";
 	}
