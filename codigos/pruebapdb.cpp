@@ -4,7 +4,12 @@
 #include <unistd.h>
 #include <stdlib.h>
 #include <time.h>
+#include <algorithm>
+#include <queue> 
+#include <utility>
+#include <set>
 #include "pdb.h"
+#include "codigoHash.h"
 
 using namespace std;
 
@@ -57,38 +62,122 @@ NODO toState(unsigned long long int state[]){
 }
 
 
+bool assign(int a[], int pos, int c){
+  if (a[pos] == -1){
+    a[pos] = c;
+    return true;
+  }
+  
+  return false;
+}
+
+class ComparePair{
+public:
+  bool operator()(pair<unsigned long long, int> n1, pair<unsigned long long, int> n2){
+    return n1.second > n2.second;
+  }
+};
+
+  typedef tuple<unsigned long long,int,int,int> pdbTuple;
+
+class ComparePdbTuple{
+public:
+  bool operator()(pdbTuple n1, pdbTuple n2){
+    return get<1>(n1) > get<1>(n2);
+  }
+};
+
+
 int main(int argc, char *argv[]){
-
-
-  unsigned long long initstate[16];
-  NODO st;
+	
+  //Generating pdb for 15 puzzle;
+  
+  //Array of store cost of each pattern
+  int *pdb15_8 = new int[518918400]; 
+  std::fill (pdb15_8,pdb15_8 + 518918400,-1);
+  int *pdb15_7 = new int[57657600]; 
+  std::fill (pdb15_7,pdb15_7 + 57657600,-1);
+  
+  //Array to hold current pattern
+  int pattern7[7];
+  int pattern8[8];
+  
+  //Hashing from pattern to int
+  pdbHash pdbHash7(16,7);
+  pdbHash pdbHash8(16,8);
   
 
-  acumulados();
-	int a=0, ida=0;
+  
+  int unfilledPattern7 = 57657600;
+  int unfilledPattern8 = 518918400;
+  
+  int posPattern7;
+  int posPattern8;
+  
+  cout << "Filling done!";
+  
+  vector<unsigned long long>nextStates;
+  pdbTuple node;
+  vector<set<unsigned long long>> closed(5761455);
 
-  while(true){
-
-    for(int i=0;i<16;i++){
-
-      cin >> initstate[i];
-      if(initstate[i]==16ULL) return 1;
-
-    }
-
-  //  if(isSolvable(initstate)){
-      
-      st = toState(initstate);
-      //cout<<manhattan(st)<<endl;
-      //return 1;
-      imprimir(st);
-      cout <<endl<<hash_15pdb_one(st)<<endl;
-      
-  //  }  
-
-  //  cout << "IDA* costo: " <<ida<<" sizeof: "<< sizeof(NODO)<<endl;
+  unsigned long long st = goalState();
+ 
+  priority_queue<pdbTuple, vector<pdbTuple>,ComparePdbTuple> states; 
+  
+  pattern15_7(pattern7,st);
+  posPattern7 =pdbHash7.hash(pattern7);
     
-  } 
+        
+  pattern15_8(pattern8,st);
+  posPattern8 =pdbHash8.hash(pattern8);
+    
+  ///(state,cost,pos7,pos8)
+  states.push(make_tuple(st,0,posPattern7,posPattern8));
+  
+  int cost = 0;
+  int threshold = 100000;
+  int h; //hashing to closed
+
+
+  while(((unfilledPattern7 > 0) || (unfilledPattern8 > 0)) && (!states.empty())){
+    node = states.top();
+    st = get<0>(node);
+    cost = get<1>(node);
+    posPattern7 = get<2>(node);
+    posPattern8 = get<3>(node);
+    states.pop();
+    
+    h = (int) (posPattern8 / 5761455ULL);
+    closed[h].insert(st);
+          
+    if (assign(pdb15_7,posPattern7,cost)) unfilledPattern7--;
+    if (assign(pdb15_8,posPattern8,cost)) unfilledPattern8--;
+    
+
+    cout << "F7: " << unfilledPattern7 << " F8: " << unfilledPattern8 << endl;
+
+    nextStates = next(st);
+    for (vector<unsigned long long>::iterator it = nextStates.begin() ; it != nextStates.end(); ++it){
+    
+      pattern15_8(pattern8,*it);
+      posPattern8 =pdbHash8.hash(pattern8);
+    
+      h = (int) (posPattern8 / 5761455ULL);
+
+      
+      if(closed[h].find(*it) != closed[h].end()){
+        continue;
+      }
+      pattern15_7(pattern7,*it);
+      posPattern7 =pdbHash7.hash(pattern7);
+
+
+      states.push(make_tuple(*it,cost+1,posPattern7,posPattern8));
+    }  
+    
+  
+  }  
+
 
 }
 
