@@ -51,6 +51,8 @@ NODO toState(unsigned long long int state[]){
   
  st.cost = manhattan_init(st);
  st.typeson = 5ULL;
+ st.path = 0ULL; 
+ st.ord = st.cost;
  // cout<<(unsigned int) st.extra<<endl;
   
   return st;
@@ -89,7 +91,7 @@ int main(int argc, char *argv[]){
       a  = A_Star(st);
       atime = clock()-atime;
       idatime = clock();
-      //ida = IDA_Star(st);
+      ida = IDA_Star(st);
       idatime = clock() - idatime;
   
       cout << "\nA* costo: " <<a<<" time: "<< atime/(double)CLOCKS_PER_SEC << endl;

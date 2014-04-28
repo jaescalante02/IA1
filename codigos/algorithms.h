@@ -12,12 +12,10 @@
 
 using namespace std;
 
-typedef tuple<int,int,NODO> nodeType2;
-
-class CompareTuple{
+class CompareNodo{
 public:
-  bool operator()(nodeType2 n1, nodeType2 n2){
-    return get<1>(n1) > get<1>(n2);
+  bool operator()(NODO n1, NODO n2){
+    return n1.ord > n2.ord;
   }
 };
 
@@ -30,33 +28,33 @@ void genclean() {generated=0;}
 
 int A_Star(NODO r){
    
-  priority_queue<nodeType2,vector<nodeType2>,CompareTuple> open;
+  priority_queue<NODO,vector<NODO>,CompareNodo> open;
   limpiar();
 
-
-  open.push(make_tuple(0,0,r));
+  open.push(r);
   
-  nodeType2 n;
+  NODO n, *naux;
   list<NODO> nextStates;
   int cost;
   NODO state;
+ 
   
   while (!open.empty()){
     n = open.top();
     open.pop();
-    cost = get<0>(n);
-    state = get<2>(n);
+    cost = n.path;
+    state = n;
      
-    if (isGoal(state)){
-      return cost;
-    }
-    insertar(state.state); 
-   
+    if (isGoal(state))return cost;
+ 
+    insertar(state); 
+    //cout <<"costo nodo "<<(int)state.ord<<endl;
     nextStates = next(state);
     for (list<NODO>::iterator it = nextStates.begin() ; it != nextStates.end(); ++it){
-      if (cerrado(it->state)) 
-        continue;
-      open.push(make_tuple(cost+1,cost+1+manhattan(*it),*it));
+      //cout <<"llegate ya"; 
+      if (cerrado(*it)) continue; 
+      //cout <<"llegate";            
+      open.push(*it);
       
     }  
   }

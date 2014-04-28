@@ -1,9 +1,10 @@
-#include<map>
+#include <unordered_map>
+//#include "heuristics"
 
+const int tam_hash = 1<<10;
+const unsigned long long MIN_STATE = 81985529216486895ULL;
 
-const int tam_hash = 1<<16;
-
-map<unsigned long long,bool> tabla[tam_hash];
+unordered_map<unsigned long long, NODO> tabla[tam_hash];
 
 void limpiar(){
 	for(int i=0;i<tam_hash;i++)
@@ -21,39 +22,47 @@ int valor(unsigned long long st,int pos){
 
 //Devuelve la posicion en el arreglo a la cual pertenece el hasheo
 int hashea(unsigned long long st){
-	int pos=-1;
-	for(int i=0;i<16 && pos==-1;i++)
-		if((st & 15ULL<<(4*i))==0ULL) 
-			pos = i;
-	int ret = 0;
-
-	if(pos % 4)
-		ret+=valor(st,pos-1);
-	ret<<=4;
-	if(pos % 4 != 3)
-	    ret+=valor(st,pos+1);
-	ret<<=4;
-	if(pos>3)
-	    ret+=valor(st,pos-4);
-	ret<<=4;
-	if(pos<12)
-		ret+=valor(st,pos+4);;	
 	
-	return ret;
+	return (st-MIN_STATE)%tam_hash;
 }
 
 
 //verifica si un estado ya ha sido cerrado
-bool cerrado(unsigned long long st){
-	int v = hashea(st);
-	return tabla[v].count(st);
+  bool cerrado(NODO st){
+	int v = hashea(st.state);
+	if(tabla[v].count(st.state)){
+	
+		NODO *n = &tabla[v][st.state];
+	  if(st.path<n->path){
+
+	    *n = st;	
+	    return false;
+	
+	  }	else return true;
+		
+	} else {
+
+
+	  return false;
+
+	
+	} 
+	
 }
 
 
 //inserta un estado cerrado en la tabla de hash
-void insertar(unsigned long long st){
-	int v = hashea(st);
-	tabla[v][st]=true;
+void insertar(NODO st){
+
+	int v = hashea(st.state);
+	if(tabla[v].count(st.state)) {
+	NODO *n = &tabla[v][st.state];
+	*n= (st.path<n->path)?st:*n;
+
+	}else tabla[v][st.state] = st;
+	
+	//falta
 }
+
 
 

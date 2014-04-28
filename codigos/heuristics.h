@@ -18,7 +18,7 @@ unsigned long long take[16];
 unsigned long long clean[16];
 
 
-#pragma pack(1)
+//#pragma pack(1)
 
 typedef struct node{
 
@@ -26,9 +26,11 @@ unsigned long long int state;
 unsigned char extra;
 unsigned char cost;
 unsigned char typeson;
+unsigned char path;
+unsigned char ord;
 } NODO;
 
-#pragma pack()
+//#pragma pack()
 
 //Este long long tendra el valor del goal 
 NODO goal;
@@ -182,7 +184,9 @@ inline void left(list<NODO>* ret, NODO st, int vecino){
   //cout<<" tmp3 ficha"<<tmp3<<endl;
   tmp3>>=((15-st.extra)*4);
   //cout<<"vecino antes"<<vecino<<" tmp3 ficha"<<tmp3<<" extra desps"<<(unsigned int) st.extra<<endl;
-  n.cost = st.cost -costo[tmp3][vecino]+costo[tmp3][st.extra];
+  n.path = st.path +1;
+  n.cost = st.cost-costo[tmp3][vecino]+costo[tmp3][st.extra];
+  n.ord = n.path + n.cost;
   n.state = tmp2 | tmp;
   n.extra = vecino;
   n.typeson = 1ULL;
@@ -201,7 +205,9 @@ inline void right(list<NODO>* ret, NODO st, int vecino){
   NODO n;
   unsigned long long tmp3 = tmp;
   tmp3>>=((15-st.extra)*4);  
-  n.cost = st.cost - costo[tmp3][vecino]+costo[tmp3][st.extra];
+  n.path = st.path +1;
+  n.cost = st.cost-costo[tmp3][vecino]+costo[tmp3][st.extra];
+  n.ord = n.path + n.cost;
   n.state = tmp2 | tmp;
   n.extra = vecino;
     n.typeson = 2ULL;
@@ -219,7 +225,9 @@ inline void up(list<NODO>* ret, NODO st, int vecino){
   unsigned long long tmp3 = tmp;
   tmp3>>=((15-st.extra)*4);
   //  cout<<"vecino antes"<<vecino<<" tmp3 ficha"<<tmp3<<" extra desps"<<(unsigned int) st.extra<<endl;
-  n.cost = st.cost  -costo[tmp3][vecino]+costo[tmp3][st.extra];
+  n.path = st.path +1;
+  n.cost = st.cost-costo[tmp3][vecino]+costo[tmp3][st.extra];
+  n.ord = n.path + n.cost;
   //cout<<(unsigned int)st.cost<<"up n "<<(unsigned int) n.cost <<endl;
   n.state = tmp2 | tmp;
   n.extra = vecino;
@@ -238,7 +246,9 @@ inline void down(list<NODO>* ret, NODO st, int vecino){
   NODO n;
   unsigned long long tmp3 = tmp;
   tmp3>>=((15-st.extra)*4);
-  n.cost = st.cost -costo[tmp3][vecino]+costo[tmp3][st.extra];
+  n.path = st.path +1;
+  n.cost = st.cost-costo[tmp3][vecino]+costo[tmp3][st.extra];
+  n.ord = n.path + n.cost;
   n.state = tmp2 | tmp;
   n.extra = vecino;
   n.typeson = 4ULL;
