@@ -83,7 +83,7 @@ int main(int argc, char *argv[]){
     //  idatime = clock() - idatime;
   
       //cout << "IDA* costo: " <<ida<<" time: "<< idatime/(double)CLOCKS_PER_SEC <<endl;
-      imprimir(st); 
+    //  imprimir(st); 
 	  cout << endl<<st.pos << endl;
     }  
 

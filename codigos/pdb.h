@@ -113,4 +113,40 @@ void pattern15_7(int arg[], unsigned long long n){
 	}
 }
 
+//Pattern for 15 puzzle, size 5. First
+void pattern15_5_1(int arg[], unsigned long long n){
+  n >>= 28;
+  arg[4] =  n & 15;
+  n >>= 12;
+  for (int i = 3; i >= 0; i-=2){
+    arg[i] = n & 15;
+    n >>= 4;
+    arg[i-1] = n & 15;
+    n >>= 8; 
+  }
+}
+
+//Pattern for 15 puzzle, size 5. Second
+void pattern15_5_2(int arg[], unsigned long long n){
+  n >>= 16;
+  for (int i = 4; i >= 1; i-=2){
+    arg[i] = n & 15;
+    n >>= 4;
+    arg[i-1] = n & 15;
+    n >>= 12; 
+  }
+  arg[0] = n & 15;
+}
+
+//Pattern for 15 puzzle, size 5. Third
+void pattern15_5_3(int arg[], unsigned long long n){
+  for (int i = 4; i >=1; i --){
+    arg[i] = n & 15;
+    n >>= 4;
+  }
+  n >>= 8;
+  arg[0] = n & 15;
+}
+
+
 #endif

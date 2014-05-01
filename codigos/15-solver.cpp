@@ -86,7 +86,7 @@ int main(int argc, char *argv[]){
       st = toState(initstate);
       //cout<<manhattan(st)<<endl;
       //return 1;
-      imprimir(st);
+      //imprimir(st);
       atime = clock();
       a  = A_Star(st);
       atime = clock()-atime;
