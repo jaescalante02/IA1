@@ -92,11 +92,11 @@ list<NODO> next(NODO state){
 	if((pos % NxN != NxN-1))
 		vecino(&ret,state, pos+1);
 	if((pos<NxN*NxN-NxN))
-		vecino(&ret,state, pos+4);		
+		vecino(&ret,state, pos+NxN);		
 	if((pos % NxN))
 		vecino(&ret,state, pos-1);		
 	if((pos>NxN-1))
-		vecino(&ret,state, pos-4);
+		vecino(&ret,state, pos-NxN);
 
 	return ret;
 }
