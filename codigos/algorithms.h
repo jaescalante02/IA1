@@ -32,7 +32,6 @@ int A_Star(NODO r){
   limpiar();
 
   open.push(r);
-  
   NODO n, *naux;
   list<NODO> nextStates;
   int cost;
@@ -64,8 +63,8 @@ int A_Star(NODO r){
 }
 
 
-int depthSearch(NODO node, int nodeCost, int cost_limit, NODO parent, bool &found){
-  int minimumCost = manhattan(node) + nodeCost;
+int depthSearch(int (*h)(NODO), NODO node, int nodeCost, int cost_limit, NODO parent, bool &found){
+  int minimumCost = h(node) + nodeCost;
   if (minimumCost > cost_limit){
     found = false;
     return minimumCost;
@@ -79,7 +78,7 @@ int depthSearch(NODO node, int nodeCost, int cost_limit, NODO parent, bool &foun
   list<NODO> nextStates = next(node);
   for (list<NODO>::iterator it = nextStates.begin() ; it != nextStates.end(); ++it){
     generated++;
-    t = depthSearch(*it, nodeCost + 1, cost_limit, node, found);
+    t = depthSearch(h, *it, nodeCost + 1, cost_limit, node, found);
     if (found){
       return t;
     }
@@ -91,16 +90,16 @@ int depthSearch(NODO node, int nodeCost, int cost_limit, NODO parent, bool &foun
   return min;
 } 
 
-int IDA_Star(NODO r){
+int IDA_Star(NODO r, int (*h)(NODO)){
 
   int t;
 
-  int cost_limit = manhattan(r);
+  int cost_limit = h(r);
   bool found = false; 
   
   while (cost_limit != numeric_limits<int>::max()){
     cout << cost_limit<<" ";
-    t =  depthSearch(r,0,cost_limit,r,found);
+    t =  depthSearch(h, r , 0, cost_limit, r, found);
     if (found){
       return t;
     }

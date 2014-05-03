@@ -4,21 +4,13 @@
 const int tam_hash = 1<<10;
 const unsigned long long MIN_STATE = 81985529216486895ULL;
 
-unordered_map<unsigned long long, NODO> tabla[tam_hash];
+unordered_map<unsigned long long, unsigned char> tabla[tam_hash];
 
 void limpiar(){
 	for(int i=0;i<tam_hash;i++)
 		tabla[i].clear();
 }
 
-int valor(unsigned long long st,int pos){
-	int ret =0 ;
-
-	unsigned long long tmp = st & (15ULL<<(4*pos));
-	ret = tmp>>(4*pos);
-
-	return ret;
-}
 
 //Devuelve la posicion en el arreglo a la cual pertenece el hasheo
 int hashea(unsigned long long st){
@@ -28,25 +20,27 @@ int hashea(unsigned long long st){
 
 
 //verifica si un estado ya ha sido cerrado
-  bool cerrado(NODO st){
+bool cerrado(NODO st){
 	int v = hashea(st.state);
-	if(tabla[v].count(st.state)){
+	/*if(tabla[v].count(st.state)){
 	
-		NODO *n = &tabla[v][st.state];
-	  if(st.path<n->path){
-
-	    *n = st;	
+		unsigned char *n = &tabla[v][st.state];
+	  if(st.path<*n){
+	    cout <<"no debiste caer aca"<<endl;
+	    *n = st.path;	
 	    return false;
 	
 	  }	else return true;
 		
 	} else {
 
-
+   
 	  return false;
 
 	
-	} 
+	} */
+	
+	return tabla[v].count(st.state);
 	
 }
 
@@ -55,13 +49,22 @@ int hashea(unsigned long long st){
 void insertar(NODO st){
 
 	int v = hashea(st.state);
-	if(tabla[v].count(st.state)) {
-	NODO *n = &tabla[v][st.state];
-	*n= (st.path<n->path)?st:*n;
+	//if(!tabla[v].count(st.state)) 
+	  tabla[v][st.state] = st.path;	
+	
+	//else {
+	
+	//unsigned char *n = &tabla[v][st.state];
+	//if(st.path<*n){
+	//  cout <<"no debiste caer aca"<<endl;
+	//  *n = st.path;
+	//}
 
-	}else tabla[v][st.state] = st;
+
+	//}
 	
 	//falta
+
 }
 
 

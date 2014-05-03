@@ -91,7 +91,7 @@ int main(int argc, char *argv[]){
       a  = A_Star(st);
       atime = clock()-atime;
       idatime = clock();
-      ida = IDA_Star(st);
+      ida = IDA_Star(st,&manhattan);
       idatime = clock() - idatime;
   
       cout << "\nA* costo: " <<a<<" time: "<< atime/(double)CLOCKS_PER_SEC << endl;
