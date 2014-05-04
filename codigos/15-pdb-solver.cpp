@@ -65,10 +65,11 @@ int main(int argc, char *argv[]){
 
   unsigned long long initstate[16];
   NODO st;
-  cargar();
-  
   clock_t atime, idatime;
-
+  cargar();
+  //cout << "bla" << endl;
+  acumulados();
+//  cout << "sali"<< endl;
 	precalcManhattan(4);
 	takeandclean();
 	makeGoal();
@@ -90,10 +91,10 @@ int main(int argc, char *argv[]){
       //return 1;
       //imprimir(st);
       atime = clock();
-      a  = A_Star(st);
+     // a  = A_Star(st);
       atime = clock()-atime;
       idatime = clock();
-      ida = IDA_Star(st,&manhattan);
+      ida = IDA_Star(st,&hashpdb);
       idatime = clock() - idatime;
   
       cout << "\nA* costo: " <<a<<" time: "<< atime/(double)CLOCKS_PER_SEC << endl;
