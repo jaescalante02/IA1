@@ -152,9 +152,9 @@ int manhattan_init(NODO state){
 	return tot ;
 }
 
-inline int manhattan(NODO st){
+inline int manhattan(NODO son, NODO st, int mov){
 
-  return st.cost ;//+ pairwise(st);
+  return st.cost-costo[mov][son.extra]+costo[mov][st.extra];;
 
 }
 
@@ -172,32 +172,27 @@ inline NODO vecino(NODO state, int ind, int vec, int mov, int ext){
 
 }
 
-inline void left(list<NODO>* ret, NODO st, int vecino){
+inline void left(list<NODO>* ret,int (*h)(NODO, NODO,int), NODO st, int vecino){
 
 	unsigned long long tmp = st.state & take[vecino];
 	unsigned long long tmp2 = st.state & clean[vecino];
-	//cout<<st.state<<endl;
   tmp>>=4;
-  //cout<<tmp2<<endl;
   NODO n;
   unsigned long long tmp3 = tmp;
-  //cout<<" tmp3 ficha"<<tmp3<<endl;
   tmp3>>=((15-st.extra)*4);
-  //cout<<"vecino antes"<<vecino<<" tmp3 ficha"<<tmp3<<" extra desps"<<(unsigned int) st.extra<<endl;
-  n.path = st.path +1;
-  n.cost = st.cost-costo[tmp3][vecino]+costo[tmp3][st.extra];
-  n.ord = n.path + n.cost;
-  n.state = tmp2 | tmp;
+  n.path = st.path +1; //a*star
   n.extra = vecino;
+  n.state = tmp2 | tmp;
+  n.cost = h(n,st,tmp3);
+  n.ord = n.path + n.cost;
+
+
   n.typeson = 1ULL;
-  //cout<<(unsigned int)st.cost<<"left n "<<(unsigned int) n.cost <<(unsigned int)costo[tmp3][vecino]<<"despues"<<(unsigned int)costo[tmp3][st.extra]<<endl;
-  //imprimir(n);
-  //exit(0);
   if(n.cost<st.cost) ret->push_front(n);
   else ret->push_back(n);
 }
 
-inline void right(list<NODO>* ret, NODO st, int vecino){
+inline void right(list<NODO>* ret,int (*h)(NODO, NODO,int), NODO st, int vecino){
 
 	unsigned long long tmp = st.state & take[vecino];
 	unsigned long long tmp2 = st.state & clean[vecino];
@@ -206,17 +201,19 @@ inline void right(list<NODO>* ret, NODO st, int vecino){
   unsigned long long tmp3 = tmp;
   tmp3>>=((15-st.extra)*4);  
   n.path = st.path +1;
-  n.cost = st.cost-costo[tmp3][vecino]+costo[tmp3][st.extra];
-  n.ord = n.path + n.cost;
-  n.state = tmp2 | tmp;
   n.extra = vecino;
+  n.state = tmp2 | tmp;
+  n.cost = h(n,st,tmp3);
+  n.ord = n.path + n.cost;
+
+  
     n.typeson = 2ULL;
   //imprimir(n);
   if(n.cost<st.cost) ret->push_front(n);
   else ret->push_back(n);
 }
 
-inline void up(list<NODO>* ret, NODO st, int vecino){
+inline void up(list<NODO>* ret,int (*h)(NODO, NODO,int), NODO st, int vecino){
 
 	unsigned long long tmp = st.state & take[vecino];
 	unsigned long long tmp2 = st.state & clean[vecino];
@@ -226,18 +223,20 @@ inline void up(list<NODO>* ret, NODO st, int vecino){
   tmp3>>=((15-st.extra)*4);
   //  cout<<"vecino antes"<<vecino<<" tmp3 ficha"<<tmp3<<" extra desps"<<(unsigned int) st.extra<<endl;
   n.path = st.path +1;
-  n.cost = st.cost-costo[tmp3][vecino]+costo[tmp3][st.extra];
+  n.extra = vecino;
+  n.state = tmp2 | tmp;
+  n.cost = h(n,st,tmp3);
   n.ord = n.path + n.cost;
   //cout<<(unsigned int)st.cost<<"up n "<<(unsigned int) n.cost <<endl;
-  n.state = tmp2 | tmp;
-  n.extra = vecino;
+
+ 
   n.typeson = 3ULL;
   //imprimir(n);
   if(n.cost<st.cost) ret->push_front(n);
   else ret->push_back(n);
 }
 
-inline void down(list<NODO>* ret, NODO st, int vecino){
+inline void down(list<NODO>* ret,int (*h)(NODO, NODO,int), NODO st, int vecino){
 
 	unsigned long long tmp = st.state & take[vecino];
 	unsigned long long tmp2 = st.state & clean[vecino];
@@ -247,30 +246,32 @@ inline void down(list<NODO>* ret, NODO st, int vecino){
   unsigned long long tmp3 = tmp;
   tmp3>>=((15-st.extra)*4);
   n.path = st.path +1;
-  n.cost = st.cost-costo[tmp3][vecino]+costo[tmp3][st.extra];
-  n.ord = n.path + n.cost;
-  n.state = tmp2 | tmp;
   n.extra = vecino;
+  n.state = tmp2 | tmp;
+  n.cost = h(n,st,tmp3);
+  n.ord = n.path + n.cost;
+
+  
   n.typeson = 4ULL;
   //imprimir(n);
   if(n.cost<st.cost) ret->push_front(n);
   else ret->push_back(n);
 }
 
-list<NODO> next(NODO state){
+list<NODO> next(int (*h)(NODO,NODO,int), NODO state){
 	
 	int pos = state.extra;
 	//cout<<"poss"<<pos<<state.state<<endl;
 	list<NODO> ret;
   
 	if((state.typeson-1ULL)&&(pos % 4 != 3))
-		right(&ret,state, pos+1);
+		right(&ret,h,state, pos+1);
 	if((state.typeson-3ULL)&&(pos<12))
-		down(&ret,state, pos+4);		
+		down(&ret,h,state, pos+4);		
 	if((state.typeson-2ULL)&&(pos % 4))
-		left(&ret,state, pos-1);		
+		left(&ret,h,state, pos-1);		
 	if((state.typeson-4ULL)&&(pos>3))
-		up(&ret,state, pos-4);
+		up(&ret,h,state, pos-4);
 
 	return ret;
 }

@@ -91,7 +91,7 @@ int main(int argc, char *argv[]){
       //return 1;
       //imprimir(st);
       atime = clock();
-     // a  = A_Star(st);
+      a  = A_Star(st,&hashpdb);
       atime = clock()-atime;
       idatime = clock();
       ida = IDA_Star(st,&hashpdb);

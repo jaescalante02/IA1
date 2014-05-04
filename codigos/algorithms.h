@@ -27,7 +27,7 @@ unsigned long long gen() {return generated;}
 void genclean() {generated=0;}
 
 
-int A_Star(NODO r){
+int A_Star(NODO r, int (*h)(NODO,NODO,int)){
    
   priority_queue<NODO,vector<NODO>,CompareNodo> open;
   limpiar();
@@ -49,7 +49,7 @@ int A_Star(NODO r){
  
     insertar(state); 
     //cout <<"costo nodo "<<(int)state.ord<<endl;
-    nextStates = next(state);
+    nextStates = next(h, state);
     for (list<NODO>::iterator it = nextStates.begin() ; it != nextStates.end(); ++it){
       //cout <<"llegate ya"; 
       if (cerrado(*it)) continue; 
@@ -64,8 +64,8 @@ int A_Star(NODO r){
 }
 
 
-int depthSearch(int (*h)(NODO), NODO node, int nodeCost, int cost_limit, NODO parent, bool &found){
-  int minimumCost = h(node) + nodeCost;
+int depthSearch(int (*h)(NODO,NODO,int), NODO node, int nodeCost, int cost_limit, NODO parent, bool &found){
+  int minimumCost = node.cost + nodeCost;
   if (minimumCost > cost_limit){
     found = false;
     return minimumCost;
@@ -76,7 +76,7 @@ int depthSearch(int (*h)(NODO), NODO node, int nodeCost, int cost_limit, NODO pa
   }
   int min = numeric_limits<int>::max();
   int t;
-  list<NODO> nextStates = next(node);
+  list<NODO> nextStates = next(h, node);
   for (list<NODO>::iterator it = nextStates.begin() ; it != nextStates.end(); ++it){
     generated++;
     t = depthSearch(h, *it, nodeCost + 1, cost_limit, node, found);
@@ -91,11 +91,11 @@ int depthSearch(int (*h)(NODO), NODO node, int nodeCost, int cost_limit, NODO pa
   return min;
 } 
 
-int IDA_Star(NODO r, int (*h)(NODO)){
+int IDA_Star(NODO r, int (*h)(NODO,NODO,int)){
 
   int t;
 
-  int cost_limit = h(r);
+  int cost_limit = r.cost;
   bool found = false; 
   
   while (cost_limit != numeric_limits<int>::max()){
@@ -114,4 +114,3 @@ int IDA_Star(NODO r, int (*h)(NODO)){
 
  
 #endif
-
