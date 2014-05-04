@@ -8,7 +8,6 @@
 #include <limits>
 #include <tuple>
 #include "heuristics.h"
-#include "hashpdb.hpp"
 #include "codigoHash.h"
 
 using namespace std;

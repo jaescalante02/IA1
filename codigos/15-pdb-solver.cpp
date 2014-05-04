@@ -5,6 +5,7 @@
 #include <stdlib.h>
 #include <time.h>
 #include "algorithms.h"
+#include "hashpdb.hpp"
 
 using namespace std;
 
@@ -49,7 +50,7 @@ NODO toState(unsigned long long int state[]){
 
   }
   
- st.cost = hashpdb(st,st,0);
+ st.cost = hashpdb555(st,st,0);
  st.typeson = 5ULL;
  st.path = 0ULL; 
  st.ord = st.cost;
@@ -77,6 +78,7 @@ int main(int argc, char *argv[]){
 
   while(true){
 
+
     for(int i=0;i<16;i++){
 
       cin >> initstate[i];
@@ -91,10 +93,10 @@ int main(int argc, char *argv[]){
       //return 1;
       //imprimir(st);
       atime = clock();
-      a  = A_Star(st,&hashpdb);
+      a  = A_Star(st,&hashpdb555);
       atime = clock()-atime;
       idatime = clock();
-      ida = IDA_Star(st,&hashpdb);
+      ida = IDA_Star(st,&hashpdb555);
       idatime = clock() - idatime;
   
       cout << "\nA* costo: " <<a<<" time: "<< atime/(double)CLOCKS_PER_SEC << endl;

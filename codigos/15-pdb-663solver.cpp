@@ -5,6 +5,7 @@
 #include <stdlib.h>
 #include <time.h>
 #include "algorithms.h"
+#include "hashpdb663.hpp"
 
 using namespace std;
 
@@ -48,8 +49,9 @@ NODO toState(unsigned long long int state[]){
     if(!state[i]) st.extra = i;
 
   }
-  
- st.cost = manhattan_init(st);
+ cout << "BUENASSSSSSS\n";
+ st.cost = hashpdb663(st,st,0);
+ cout<<"SALIENDOOO"<<st.cost<<st.cost<<st.cost<<endl;
  st.typeson = 5ULL;
  st.path = 0ULL; 
  st.ord = st.cost;
@@ -90,11 +92,13 @@ int main(int argc, char *argv[]){
       //cout<<manhattan(st)<<endl;
       //return 1;
       //imprimir(st);
+      cout<<"hola "<<pdbhash663(st,st,0)<<endl;
+      
       atime = clock();
-      a  = A_Star(st,&hashpdb);
+      //a  = A_Star(st,&hashpdb663);
       atime = clock()-atime;
       idatime = clock();
-      ida = IDA_Star(st,&hashpdb);
+      //ida = IDA_Star(st,&hashpdb663);
       idatime = clock() - idatime;
   
       cout << "\nA* costo: " <<a<<" time: "<< atime/(double)CLOCKS_PER_SEC << endl;

@@ -72,7 +72,7 @@ using namespace std;
 
   
   
-  int hashpdb(NODO n,NODO n2, int mk){
+  int hashpdb555(NODO n,NODO n2, int mk){
     NODO2 v1,v2,v3;
     unsigned long long st = n.state;
     int c1,c2,c3;
