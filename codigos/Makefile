@@ -16,4 +16,4 @@ pdb6: pdb6.cpp
 	g++ -std=gnu++0x pdb6.cpp -o pdb6
 	
 clean:	
-	rm -rf *~ 15-manhattan 24-solver pdb5 pdb6
+	rm -rf *~ 15-manhattan 24-solver pdb5 pdb6 15-pdb-solver
