@@ -15,11 +15,11 @@
 using namespace std;
 
 #define TAMPATRON 7 //6 + cero
-#define TAMPDB 127512000 //5765760
-#define TOVISIT 127512000 //5765760
-#define MODNUMBER 249046
-#define MULTINDEX 20
-#define NxN 5
+#define TAMPDB  5765760
+#define TOVISIT 57657600
+#define MODNUMBER 10000
+#define MULTINDEX 11
+#define NxN 4
 
 struct NODO {
 
@@ -36,11 +36,11 @@ goal.costo = 0;
 goal.ficha[0]=0;
 //elegir patron
 goal.ficha[1]=1;
-goal.ficha[2]=5;
-goal.ficha[3]=6;
-goal.ficha[4]=10;
-goal.ficha[5]=11;
-goal.ficha[6]=12;
+goal.ficha[2]=2;
+goal.ficha[3]=4;
+goal.ficha[4]=5;
+goal.ficha[5]=8;
+goal.ficha[6]=9;
 //goal.ficha[7]=15;
 //goal.ficha[8]=15;
 
@@ -89,13 +89,13 @@ list<NODO> next(NODO state){
 	list<NODO> ret;
 	unsigned char pos = state.ficha[0]; 
   
-	if((pos % NxN != NxN-1)){cout<<"rigth\n";
+	if((pos % NxN != NxN-1)){//cout<<"rigth\n";
 		vecino(&ret,state, pos+1);}
-	if((pos<NxN*NxN-NxN)){cout<<"down\n";
+	if((pos<NxN*NxN-NxN)){//cout<<"down\n";
 		vecino(&ret,state, pos+NxN);}		
-	if((pos % NxN)){cout<<"left\n";
+	if((pos % NxN)){//cout<<"left\n";
 		vecino(&ret,state, pos-1);}		
-	if((pos>NxN-1)){cout<<"up\n";
+	if((pos>NxN-1)){//cout<<"up\n";
 		vecino(&ret,state, pos-NxN);}
 
 	return ret;
@@ -189,7 +189,7 @@ makegoal();
 
 priority_queue<NODO,vector<NODO>,CompareNodo> states;
 states.push(goal);
-unsigned long long index2 = myhash(1,acum2,goal.ficha);
+unsigned long long index2 = myhash(0,acum1,goal.ficha);
 cerrar(index2,goal.costo);
 NODO node;
 int threshold = 1000000;
@@ -201,25 +201,25 @@ list<NODO> nextStates;
     states.pop();              
     asignar(node);
     if (threshold < 0){
-        cout << tovisit << endl;
+        //cout << tovisit << endl;
         threshold = 1000000;
     }   
     threshold--;
     nextStates = next(node);
     for (list<NODO>::iterator it = nextStates.begin() ; it != nextStates.end(); ++it){
       //cout<<threshold<<endl;
-      unsigned long long index = myhash(1,acum2,it->ficha);
+      unsigned long long index = myhash(0,acum1,it->ficha);
       if(cerrar(index,it->costo)){
        
           states.push(*it);
-          int y = 0;
-          while(y<TAMPATRON){ cout <<(int)it->ficha[y]<<" "; y++;}
-          cout<<endl;
+          //int y = 0;
+          //while(y<TAMPATRON){ cout <<(int)it->ficha[y]<<" "; y++;}
+          //cout<<endl;
 
       } 
     }  
     
-   if(threshold==999996) exit(0); 
+   //if(threshold==999996) exit(0); 
   
   }
   int i =0;

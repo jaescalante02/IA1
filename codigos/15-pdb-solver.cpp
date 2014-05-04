@@ -49,7 +49,7 @@ NODO toState(unsigned long long int state[]){
 
   }
   
- st.cost = manhattan_init(st);
+ st.cost = hashpdb(st,st,0);
  st.typeson = 5ULL;
  st.path = 0ULL; 
  st.ord = st.cost;

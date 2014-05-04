@@ -15,10 +15,11 @@
 using namespace std;
 
 #define TAMPATRON 6 //5 + cero
-#define TAMPDB 524160
-#define TOVISIT 5765760
-#define MODNUMBER 360360
-#define MULTINDEX 12
+#define TAMPDB 6375600 //524160
+#define TOVISIT 127512000 //5765760
+#define MODNUMBER 498093  //360360
+#define MULTINDEX 21
+#define NxN 5
 
 struct NODO {
 
@@ -34,11 +35,11 @@ void makegoal(){
 goal.costo = 0;
 goal.ficha[0]=0;
 //elegir patron
-goal.ficha[1]=9;
-goal.ficha[2]=12;
-goal.ficha[3]=13;
-goal.ficha[4]=14;
-goal.ficha[5]=15;
+goal.ficha[1]=1;
+goal.ficha[2]=2;
+goal.ficha[3]=5;
+goal.ficha[4]=6;
+goal.ficha[5]=7;
 //goal.ficha[6]=15;
 //goal.ficha[7]=15;
 //goal.ficha[8]=15;
@@ -88,14 +89,14 @@ list<NODO> next(NODO state){
 	list<NODO> ret;
 	unsigned char pos = state.ficha[0]; 
   
-	if((pos % 4 != 3))
+	if((pos % NxN != NxN-1))
 		vecino(&ret,state, pos+1);
-	if((pos<12))
-		vecino(&ret,state, pos+4);		
-	if((pos % 4))
+	if((pos<NxN*NxN-NxN))
+		vecino(&ret,state, pos+NxN);		
+	if((pos % NxN))
 		vecino(&ret,state, pos-1);		
-	if((pos>3))
-		vecino(&ret,state, pos-4);
+	if((pos>=NxN))
+		vecino(&ret,state, pos-NxN);
 
 	return ret;
 }
