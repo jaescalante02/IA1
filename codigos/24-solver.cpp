@@ -5,6 +5,7 @@
 #include <stdlib.h>
 #include <time.h>
 #include "24-puzzle.h"
+#include "algorithms2.h" 
 
 using namespace std;
 
@@ -37,14 +38,19 @@ bool isSolvable(unsigned long long state[]){
 
 }
 
-node toState(unsigned long long int state[]){
-  node st = node(0ULL,0ULL,0);
+NODO toState(unsigned long long int state[]){
+  NODO st = NODO(0ULL,0ULL,0);
 
   for(int i=0;i<25;i++){
 	putPos(st,i,state[i]);
 
   }
 
+  st.cost = hashpdb(st,st,0);
+  st.typeson = 5ULL;
+  st.path = 0ULL; 
+  st.ord = st.cost;
+  
   return st;
 
 }
@@ -54,12 +60,13 @@ int main(int argc, char *argv[]){
 
 
   unsigned long long initstate[25];
-  node st;
+  NODO st;
   int pos;
+  cargar();
   clock_t idatime;
 
 	//precalcManhattan(4);
-	//makeGoal();
+  makeGoal();
 	int ida=0;
 
   while(true){
@@ -78,11 +85,11 @@ int main(int argc, char *argv[]){
 		st.pos = pos;
     //  imprimir(st);
 
-    // idatime = clock();
-    //  ida = IDA_Star(st);
-    //  idatime = clock() - idatime;
+      idatime = clock();
+      ida = IDA_Star(st,hashpdb);
+      idatime = clock() - idatime;
   
-      //cout << "IDA* costo: " <<ida<<" time: "<< idatime/(double)CLOCKS_PER_SEC <<endl;
+      cout << "IDA* costo: " <<ida<<" time: "<< idatime/(double)CLOCKS_PER_SEC <<endl;
     //  imprimir(st); 
 	  cout << endl<<st.pos << endl;
     }  
