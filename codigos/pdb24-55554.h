@@ -8,11 +8,12 @@
 using namespace std;
 
 #define TAM_PATRON 6375600
+#define TAM_PATRON2 303600
 
 unsigned char pdb24_1[TAM_PATRON];
 unsigned char pdb24_2[TAM_PATRON];
 unsigned char pdb24_3[TAM_PATRON];
-unsigned char pdb24_4[TAM_PATRON];
+unsigned char pdb24_4[TAM_PATRON2];
 unsigned char pdb24_5[TAM_PATRON];
 
 
@@ -55,8 +56,8 @@ void cargar(){
 
   i=0;
   ifstream file4("pdbs/pdb24_55554_fourth.txt");
-  if (file3.is_open()){
-    while (i<TAM_PATRON) {
+  if (file4.is_open()){
+    while (i<TAM_PATRON2) {
       getline (file4,line);
       pdb24_4[i] = atoi(line.c_str());
       i++;

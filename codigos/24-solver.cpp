@@ -63,6 +63,7 @@ int main(int argc, char *argv[]){
   NODO st;
   int pos;
   cargar();
+  acumulados();
   clock_t idatime;
 
 	//precalcManhattan(4);
@@ -79,20 +80,23 @@ int main(int argc, char *argv[]){
 
     }
 
-    if(isSolvable(initstate)){
+   // if(isSolvable(initstate)){
 	
 	    st = toState(initstate);
 		st.pos = pos;
-    //  imprimir(st);
+    cout<<hashpdb(st,st,0)<<endl;
 
       idatime = clock();
       ida = IDA_Star(st,&hashpdb);
       idatime = clock() - idatime;
   
-      cout << "IDA* costo: " <<ida<<" time: "<< idatime/(double)CLOCKS_PER_SEC <<endl;
+      cout << "IDA* costo: " <<ida<<" time: "<< idatime/(double)CLOCKS_PER_SEC<<endl<<
+      "Generados "<<gen()<<" nodos ->"<<gen()/(idatime/(double)CLOCKS_PER_SEC)<<endl;
+      
+      genclean();
     //  imprimir(st); 
-	  cout << endl<<st.pos << endl;
-    }  
+	 // cout << endl<<st.pos << endl;
+   // }  
 
     
     

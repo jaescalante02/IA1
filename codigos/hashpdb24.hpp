@@ -4,9 +4,9 @@
 //#include"nodoDef.hpp"
 using namespace std;
 
-#ifndef IA_PDB5554
+#ifndef IA_PDB55554
   #include"pdb24-55554.h"
-  #define IA_PDB5554
+  #define IA_PDB55554
   #define TAMPATRON 6 //5 + cero
   #define MULTINDEX 21
   #define TAMPATRON2 5//4 + cero
@@ -17,12 +17,13 @@ using namespace std;
   unsigned char costo;
   
   };
-  
-  unsigned long long acum1[TAMPATRON];
-  unsigned long long acum2[TAMPATRON2];
+
+  int kmt;  
+  unsigned long long acum1[TAMPATRON2];
+  unsigned long long acum2[TAMPATRON];
   
   void acumulados(){
-  
+  kmt=0;
     acum1[TAMPATRON2-1] = 1ULL;
   
     unsigned long long aux = MULTINDEX2;
@@ -34,6 +35,10 @@ using namespace std;
     
     }
     
+   //for(int i=0;i<TAMPATRON2;i++) cout<<i<<" "<<acum1[i]<<" ";
+   //cout<<"\n";
+   //exit(0);
+    
     acum2[TAMPATRON-1] = 1ULL;
     
     aux = MULTINDEX;
@@ -41,10 +46,14 @@ using namespace std;
     for(int i=TAMPATRON-2;i>=0;i--){
     
       acum2[i] = acum2[i+1]*aux;
-	aux++;
+      aux++;
     
     }
+   // for(int i=0;i<TAMPATRON;i++) cout<<i<<" "<<acum2[i]<<" ";
+   // cout<<"\n";
+    
   
+ // exit(0);
   }
   
   int k(int begin, unsigned char arg[],int pos){
@@ -81,7 +90,7 @@ using namespace std;
       
       switch(tmp){
 	case 0ULL: 
-		  v1.ficha[0]=v2.ficha[0]=v3.ficha[0]=v4.ficha[i]=v5.ficha[0]=i;
+		  v1.ficha[0]=v2.ficha[0]=v3.ficha[0]=v4.ficha[0]=v5.ficha[0]=i;
 		  break;
 	case 1ULL: 
 		  v1.ficha[1]=i;
@@ -164,16 +173,28 @@ using namespace std;
     unsigned long long index3 = myhash(1,TAMPATRON,acum2,v3.ficha);
     unsigned long long index4 = myhash(1,TAMPATRON2,acum1,v4.ficha);
     unsigned long long index5 = myhash(1,TAMPATRON,acum2,v5.ficha);
-    
-    
+    kmt++;
+  /*  cout <<"k "<<kmt<< " 1 "<<index1<<" 2 "<<index2<<" 3 "<<index3<<" 4 "<<index4<<" 5 "<<index5<<endl;
+    if((index1>6375600)||(index2>6375600)||(index3>6375600)||(index4>303600)||(index5>6375600)){
+    imprimir(n,'\n');
+    cout<<"ERRRRRRORRRRRRR"<<endl;
+    for(int j=0;j<6;j++) cout<<(int)v1.ficha[j]<<" ";cout<<endl;
+    for(int j=0;j<6;j++) cout<<(int)acum2[j]<<" ";cout<<endl;
+    for(int j=0;j<6;j++) cout<<(int)v2.ficha[j]<<" ";cout<<endl;
+    for(int j=0;j<6;j++) cout<<(int)v3.ficha[j]<<" ";cout<<endl;
+    for(int j=0;j<5;j++) cout<<(int)v4.ficha[j]<<" "; cout<<endl;
+    for(int j=0;j<6;j++) cout<<(int)v5.ficha[j]<<" ";          cout<<endl;  
+       
+    exit(0);
+    }*/
     ret =0;
+    //if(kmt==725) exit(0);
     //cout << index1 << endl;
     ret+=pdb24_1[index1];
     ret+=pdb24_2[index2];
     ret+=pdb24_3[index3];
     ret+=pdb24_4[index4];
     ret+=pdb24_5[index5];
-    //cout << ret << endl;
     return ret;
   }
 

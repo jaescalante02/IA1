@@ -42,7 +42,7 @@ int depthSearch(int (*h)(NODO,NODO,int), NODO node, int nodeCost, int cost_limit
   if (minimumCost > cost_limit){
     found = false;
     return minimumCost;
-  }
+  } 
   if (isGoal(node)) {
     found = true;
     return nodeCost;
@@ -54,7 +54,7 @@ int depthSearch(int (*h)(NODO,NODO,int), NODO node, int nodeCost, int cost_limit
     generated++;
     t = depthSearch(h, *it, nodeCost + 1, cost_limit, node, found);
     if (found){
-      return t;
+      return t; 
     }
     if (t < min){
       min = t;
