@@ -49,9 +49,9 @@ NODO toState(unsigned long long int state[]){
     if(!state[i]) st.extra = i;
 
   }
- cout << "BUENASSSSSSS\n";
+ //cout << "BUENASSSSSSS\n";
  st.cost = hashpdb663(st,st,0);
- cout<<"SALIENDOOO"<<st.cost<<st.cost<<st.cost<<endl;
+ //cout<<"SALIENDOOO"<<(int)st.cost<<(int)st.cost<<(int)st.cost<<endl;
  st.typeson = 5ULL;
  st.path = 0ULL; 
  st.ord = st.cost;
@@ -91,16 +91,16 @@ int main(int argc, char *argv[]){
       st = toState(initstate);
       //cout<<manhattan(st)<<endl;
       //return 1;
-      //imprimir(st);
-      cout<<"hola "<<pdbhash663(st,st,0)<<endl;
+      imprimir(st);
+      //cout<<"hola "<<hashpdb663(st,st,0)<<endl;
       
       atime = clock();
-      //a  = A_Star(st,&hashpdb663);
+      a  = A_Star(st,&hashpdb663);
       atime = clock()-atime;
       idatime = clock();
-      //ida = IDA_Star(st,&hashpdb663);
+      ida = IDA_Star(st,&hashpdb663);
       idatime = clock() - idatime;
-  
+
       cout << "\nA* costo: " <<a<<" time: "<< atime/(double)CLOCKS_PER_SEC << endl;
       cout << "IDA* costo: " <<ida<<" time: "<< idatime/(double)CLOCKS_PER_SEC<<endl<<
       "Generados "<<gen()<<" nodos ->"<<gen()/(idatime/(double)CLOCKS_PER_SEC)<<endl;

@@ -4,16 +4,13 @@
 //#include"nodoDef.hpp"
 using namespace std;
 
-#ifndef pdbhash
+#ifndef IA_PDB5554
   #include"pdb24-55554.h"
-  #define pdbhash
+  #define IA_PDB5554
   #define TAMPATRON 6 //5 + cero
-  #define TAMPDB 6375600
-  #define TOVISIT 5765760
-  #define MODNUMBER 360360
   #define MULTINDEX 21
-  #define TAMPATRON2 4
-  
+  #define TAMPATRON2 5//4 + cero
+  #define MULTINDEX2 22  
   struct NODO2 {
   
   unsigned char ficha[TAMPATRON];
@@ -21,18 +18,16 @@ using namespace std;
   
   };
   
-  unsigned char pdb15_5[TAMPDB];
-  unsigned long long tovisit = TOVISIT;
   unsigned long long acum1[TAMPATRON];
-  unsigned long long acum2[TAMPATRON];
+  unsigned long long acum2[TAMPATRON2];
   
   void acumulados(){
   
-    acum1[TAMPATRON-1] = 1ULL;
+    acum1[TAMPATRON2-1] = 1ULL;
   
-    unsigned long long aux = MULTINDEX-1;
+    unsigned long long aux = MULTINDEX2;
     
-    for(int i=TAMPATRON-2;i>=0;i--){
+    for(int i=TAMPATRON2-2;i>=0;i--){
     
       acum1[i] = acum1[i+1]*aux;
       aux++;
@@ -63,9 +58,9 @@ using namespace std;
   }
   
   
-  unsigned long long myhash(int begin, unsigned long long acum[], unsigned char arg[]){
+  unsigned long long myhash(int begin,int tam,unsigned long long acum[], unsigned char arg[]){
     unsigned long long index=0ULL;
-    for(int i=begin;i<TAMPATRON;i++)
+    for(int i=begin;i<tam;i++)
       index += (arg[i]-k(begin,arg,i))*acum[i];
   
     return index;
@@ -164,11 +159,11 @@ using namespace std;
     }
     
     
-    unsigned long long index1 = myhash(1,acum2,v1.ficha);
-    unsigned long long index2 = myhash(1,acum2,v2.ficha);
-    unsigned long long index3 = myhash(1,acum2,v3.ficha);
-    unsigned long long index4 = myhash(1,acum2,v4.ficha);
-    unsigned long long index5 = myhash(1,acum2,v5.ficha);
+    unsigned long long index1 = myhash(1,TAMPATRON,acum2,v1.ficha);
+    unsigned long long index2 = myhash(1,TAMPATRON,acum2,v2.ficha);
+    unsigned long long index3 = myhash(1,TAMPATRON,acum2,v3.ficha);
+    unsigned long long index4 = myhash(1,TAMPATRON2,acum1,v4.ficha);
+    unsigned long long index5 = myhash(1,TAMPATRON,acum2,v5.ficha);
     
     
     ret =0;

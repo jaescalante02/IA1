@@ -86,7 +86,7 @@ int main(int argc, char *argv[]){
     //  imprimir(st);
 
       idatime = clock();
-      ida = IDA_Star(st,hashpdb);
+      ida = IDA_Star(st,&hashpdb);
       idatime = clock() - idatime;
   
       cout << "IDA* costo: " <<ida<<" time: "<< idatime/(double)CLOCKS_PER_SEC <<endl;

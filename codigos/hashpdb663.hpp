@@ -4,10 +4,10 @@
 //#include"nodoDef.hpp"
 using namespace std;
 
-#ifndef pdbhash663
+#ifndef IA_PDB663
 
   #include"pdb15-663.h"
-  #define pdbhash663
+  #define IA_PDB663
   #define TAMPATRON 7 //6 + cero
   #define TAMPATRON2 4 //3 + cero
   #define MULTINDEX 11
@@ -94,7 +94,7 @@ unsigned char ord;
 int hashpdb663(NODO n,NODO n2, int mk){
     NODO2 v1,v2;
     NODO3 v3;
-    cout<<"ENTRANDOOO\n";
+    //cout<<"ENTRANDOOO\n";
     unsigned long long st = n.state;
     int ret =0;
     for(int i=0;i<16;i++){
@@ -161,12 +161,12 @@ int hashpdb663(NODO n,NODO n2, int mk){
     
      
     ret =0;
-    cout << index1 << endl;
+   // cout << index1 << endl;
     ret+=pdb15_663_1[index1];
     ret+=pdb15_663_2[index2];
     ret+=pdb15_663_3[index3];
-    cout << ret<<ret<< endl;
-    return 14;
+   // cout << ret<<ret<< endl;
+    return ret;
   }
 
 

@@ -1,5 +1,5 @@
-#ifndef IA_ALGORITHMS
-#define IA_ALGORITHMS
+#ifndef IA_ALGORITHMS2
+#define IA_ALGORITHMS2
 
 #include<iostream>
 #include<queue>
