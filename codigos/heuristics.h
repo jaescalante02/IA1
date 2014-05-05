@@ -158,7 +158,9 @@ inline int manhattan(NODO son, NODO st, int mov){
 
 }
 
-
+inline int manhattan_pairwise(NODO n1, NODO n2, int mov){
+    return manhattan_init(n1)+pairwise(n1);
+    }
 inline NODO vecino(NODO state, int ind, int vec, int mov, int ext){
 		unsigned long long tmp = state.state & (15ULL<<(4*ind));
 		unsigned long long tmp2 = state.state & (15ULL<<(4*vec));

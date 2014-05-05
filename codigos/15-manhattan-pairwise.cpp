@@ -49,7 +49,7 @@ NODO toState(unsigned long long int state[]){
 
   }
   
- st.cost = manhattan_init(st);
+ st.cost = manhattan_pairwise(st,st,0);
  st.typeson = 5ULL;
  st.path = 0ULL; 
  st.ord = st.cost;
@@ -86,12 +86,12 @@ int main(int argc, char *argv[]){
       st = toState(initstate);
       //cout<<manhattan(st)<<endl;
       //return 1;
-      //imprimir(st);
+      imprimir(st);
       atime = clock();
-      a  = A_Star(st);
+      a  = A_Star(st, &manhattan_pairwise);
       atime = clock()-atime;
       idatime = clock();
-      ida = IDA_Star(st,&manhattan);
+      ida = IDA_Star(st,&manhattan_pairwise);
       idatime = clock() - idatime;
   
       cout << "\nA* costo: " <<a<<" time: "<< atime/(double)CLOCKS_PER_SEC << endl;
