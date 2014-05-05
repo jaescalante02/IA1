@@ -24,7 +24,9 @@ struct NODO{
 	}
 
 	//constructor que copia un nodo
-	NODO(const NODO &n):p1(n.p1),p2(n.p2),pos(n.pos){}
+	NODO(const NODO &n):p1(n.p1),p2(n.p2),pos(n.pos),cost(n.cost),\
+			    ord(n.ord),typeson(n.typeson),extra(n.extra),\
+			    path(n.path){}
 };
 
 
