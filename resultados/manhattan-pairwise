@@ -1,0 +1,599 @@
+41 43 45 47 49 51 53 
+A* costo: 53 time: 1.95
+IDA* costo: 53 time: 0.76
+Generados 1355734 nodos ->1.78386e+06
+
+
+41 43 45 47 49 51 53 55 57 
+A* costo: 57 time: 16.83
+IDA* costo: 57 time: 13.09
+Generados 21654171 nodos ->1.65425e+06
+
+
+43 45 47 49 51 53 55 
+A* costo: 55 time: 8.28
+IDA* costo: 55 time: 3.04
+Generados 5196117 nodos ->1.70925e+06
+
+
+41 43 45 47 49 51 53 55 57 59 
+A* costo: 59 time: 101.41
+IDA* costo: 59 time: 86.78
+Generados 145523234 nodos ->1.67692e+06
+
+
+42 44 46 48 50 52 54 56 
+A* costo: 56 time: 23.95
+IDA* costo: 56 time: 7.41
+Generados 12042784 nodos ->1.62521e+06
+
+
+42 44 46 48 50 52 54 56 
+A* costo: 56 time: 6.04
+IDA* costo: 56 time: 2.1
+Generados 3448095 nodos ->1.64195e+06
+
+
+36 40 42 44 46 48 50 52 
+A* costo: 52 time: 2.54
+IDA* costo: 52 time: 0.71
+Generados 998459 nodos ->1.40628e+06
+
+
+30 32 34 36 38 40 42 44 46 48 50 52 
+A* costo: 52 time: 25.64
+IDA* costo: 52 time: 20.73
+Generados 30719226 nodos ->1.48187e+06
+
+
+32 36 38 40 42 44 46 48 50 
+A* costo: 50 time: 3.17
+IDA* costo: 50 time: 1.29
+Generados 1839714 nodos ->1.42613e+06
+
+
+32 36 38 40 42 44 46 
+A* costo: 46 time: 0.34
+IDA* costo: 46 time: 0.14
+Generados 206748 nodos ->1.47677e+06
+
+
+43 45 47 49 51 53 55 57 59 
+A* costo: 59 time: 43.64
+IDA* costo: 59 time: 83.36
+Generados 131181030 nodos ->1.57367e+06
+
+
+43 45 47 49 51 53 55 57 
+A* costo: 57 time: 11.12
+IDA* costo: 57 time: 5.25
+Generados 7905858 nodos ->1.50588e+06
+
+
+35 37 39 41 43 45 
+A* costo: 45 time: 0.64
+IDA* costo: 45 time: 0.15
+Generados 163097 nodos ->1.08731e+06
+
+
+36 38 40 42 44 46 
+A* costo: 46 time: 1.09
+IDA* costo: 46 time: 1.23
+Generados 1703919 nodos ->1.3853e+06
+
+
+41 43 45 47 49 51 53 55 57 59 
+A* costo: 59 time: 58.8
+IDA* costo: 59 time: 10.96
+Generados 15529794 nodos ->1.41695e+06
+
+
+44 46 48 50 52 54 56 58 60 62 
+A* costo: 62 time: 99.43
+IDA* costo: 62 time: 38.61
+Generados 58355175 nodos ->1.5114e+06
+
+
+24 28 30 32 34 36 38 40 42 
+A* costo: 42 time: 4.98
+IDA* costo: 42 time: 1.41
+Generados 2037638 nodos ->1.44513e+06
+
+
+46 48 50 52 54 56 58 60 62 64 66 
+A* costo: 66 time: 207.53
+IDA* costo: 66 time: 143.68
+Generados 214696178 nodos ->1.49427e+06
+
+
+43 45 47 49 51 53 55 
+A* costo: 55 time: 12.6
+IDA* costo: 55 time: 3.64
+Generados 5208954 nodos ->1.43103e+06
+
+
+36 38 40 42 44 46 
+A* costo: 46 time: 1.19
+IDA* costo: 46 time: 0.67
+Generados 945988 nodos ->1.41192e+06
+
+
+36 38 40 42 44 46 48 50 52 
+A* costo: 52 time: 8.34
+IDA* costo: 52 time: 6.56
+Generados 9409438 nodos ->1.43437e+06
+
+
+34 36 38 40 42 44 46 48 50 52 54 
+A* costo: 54 time: 14.47
+IDA* costo: 54 time: 7.78
+Generados 11280306 nodos ->1.44991e+06
+
+
+41 45 47 49 51 53 55 57 59 
+A* costo: 59 time: 38.76
+IDA* costo: 59 time: 20.02
+Generados 28271951 nodos ->1.41219e+06
+
+
+33 37 39 41 43 45 47 49 
+A* costo: 49 time: 3.77
+IDA* costo: 49 time: 1.32
+Generados 1851788 nodos ->1.40287e+06
+
+
+34 38 40 42 44 46 48 50 52 54 
+A* costo: 54 time: 19.19
+IDA* costo: 54 time: 11.67
+Generados 15217503 nodos ->1.30398e+06
+
+
+32 36 38 40 42 44 46 48 50 52 
+A* costo: 52 time: 12.46
+IDA* costo: 52 time: 12.32
+Generados 16575264 nodos ->1.34539e+06
+
+
+40 44 46 48 50 52 54 56 58 
+A* costo: 58 time: 53.89
+IDA* costo: 58 time: 32.4
+Generados 49880829 nodos ->1.53953e+06
+
+
+33 35 37 39 41 43 45 47 49 51 53 
+A* costo: 53 time: 30.21
+IDA* costo: 53 time: 17.39
+Generados 24951850 nodos ->1.43484e+06
+
+
+36 38 40 42 44 46 48 50 52 
+A* costo: 52 time: 3.57
+IDA* costo: 52 time: 1.29
+Generados 1894977 nodos ->1.46897e+06
+
+
+38 40 42 44 46 48 50 52 54 
+A* costo: 54 time: 5.9
+IDA* costo: 54 time: 4.79
+Generados 7417054 nodos ->1.54845e+06
+
+
+35 37 39 41 43 45 47 
+A* costo: 47 time: 0.72
+IDA* costo: 47 time: 0.39
+Generados 612954 nodos ->1.57168e+06
+
+
+38 40 42 44 46 48 50 
+A* costo: 50 time: 0.94
+IDA* costo: 50 time: 0.48
+Generados 761060 nodos ->1.58554e+06
+
+
+43 45 47 49 51 53 55 57 59 
+A* costo: 59 time: 49.49
+IDA* costo: 59 time: 81.66
+Generados 128876060 nodos ->1.5782e+06
+
+
+42 44 46 48 50 52 54 56 58 60 
+A* costo: 60 time: 29.32
+IDA* costo: 60 time: 25.53
+Generados 38372230 nodos ->1.50303e+06
+
+
+36 42 44 46 48 50 52 
+A* costo: 52 time: 3.51
+IDA* costo: 52 time: 2.23
+Generados 3459978 nodos ->1.55156e+06
+
+
+39 41 43 45 47 49 51 53 55 
+A* costo: 55 time: 19.95
+IDA* costo: 55 time: 4.75
+Generados 7235517 nodos ->1.52327e+06
+
+
+36 38 40 42 44 46 48 50 52 
+A* costo: 52 time: 5.23
+IDA* costo: 52 time: 1.6
+Generados 2449604 nodos ->1.531e+06
+
+
+40 42 44 46 48 50 52 54 56 58 
+A* costo: 58 time: 24.17
+IDA* costo: 58 time: 17.25
+Generados 24369552 nodos ->1.41273e+06
+
+
+35 37 39 41 43 45 47 49 
+A* costo: 49 time: 5.52
+IDA* costo: 49 time: 3.64
+Generados 4480453 nodos ->1.23089e+06
+
+
+36 38 40 42 44 46 48 50 52 54 
+A* costo: 54 time: 19.88
+IDA* costo: 54 time: 19.19
+Generados 27119695 nodos ->1.41322e+06
+
+
+36 40 42 44 46 48 50 52 54 
+A* costo: 54 time: 20.3
+IDA* costo: 54 time: 16.47
+Generados 25150396 nodos ->1.52704e+06
+
+
+30 32 34 36 38 40 42 
+A* costo: 42 time: 0.92
+IDA* costo: 42 time: 0.09
+Generados 139321 nodos ->1.54801e+06
+
+
+48 52 54 56 58 60 62 64 
+A* costo: 64 time: 11.95
+IDA* costo: 64 time: 5.29
+Generados 8470996 nodos ->1.60132e+06
+
+
+32 38 40 42 44 46 48 50 
+A* costo: 50 time: 1.81
+IDA* costo: 50 time: 1.52
+Generados 2232493 nodos ->1.46875e+06
+
+
+39 41 43 45 47 49 51 
+A* costo: 51 time: 0.59
+IDA* costo: 51 time: 0.88
+Generados 1336435 nodos ->1.51868e+06
+
+
+35 41 43 45 47 49 
+A* costo: 49 time: 1.35
+IDA* costo: 49 time: 1.02
+Generados 1566670 nodos ->1.53595e+06
+
+
+35 37 39 41 43 45 47 
+A* costo: 47 time: 0.66
+IDA* costo: 47 time: 0.13
+Generados 212473 nodos ->1.63441e+06
+
+
+39 41 43 45 47 49 
+A* costo: 49 time: 0.36
+IDA* costo: 49 time: 0.05
+Generados 77798 nodos ->1.55596e+06
+
+
+33 37 39 41 43 45 47 49 51 53 55 57 59 
+A* costo: 59 time: 171.31
+IDA* costo: 59 time: 179.24
+Generados 267835861 nodos ->1.49429e+06
+
+
+39 41 43 45 47 49 51 53 
+A* costo: 53 time: 12.91
+IDA* costo: 53 time: 1.78
+Generados 2763083 nodos ->1.55229e+06
+
+
+44 46 48 50 52 54 56 
+A* costo: 56 time: 5.06
+IDA* costo: 56 time: 3.36
+Generados 5263303 nodos ->1.56646e+06
+
+
+38 42 44 46 48 50 52 54 56 
+A* costo: 56 time: 21.7
+IDA* costo: 56 time: 17.43
+Generados 27220015 nodos ->1.56168e+06
+
+
+50 52 54 56 58 60 62 64 
+A* costo: 64 time: 163.19
+IDA* costo: 64 time: 76.75
+Generados 117439095 nodos ->1.53015e+06
+
+
+40 42 44 46 48 50 52 54 56 
+A* costo: 56 time: 29.02
+IDA* costo: 56 time: 18.93
+Generados 28598970 nodos ->1.51077e+06
+
+
+29 31 33 35 37 39 41 
+A* costo: 41 time: 0.93
+IDA* costo: 41 time: 0.09
+Generados 91749 nodos ->1.01943e+06
+
+
+29 35 37 39 41 43 45 47 49 51 53 55 
+A* costo: 55 time: 122.28
+IDA* costo: 55 time: 101.17
+Generados 145994538 nodos ->1.44306e+06
+
+
+36 38 40 42 44 46 48 50 
+A* costo: 50 time: 6.64
+IDA* costo: 50 time: 1.77
+Generados 2741714 nodos ->1.54899e+06
+
+
+37 39 41 43 45 47 49 51 
+A* costo: 51 time: 2.46
+IDA* costo: 51 time: 1.98
+Generados 2979109 nodos ->1.5046e+06
+
+
+35 37 39 41 43 45 47 49 51 53 55 57 
+A* costo: 57 time: 100.38
+IDA* costo: 57 time: 59.77
+Generados 85938755 nodos ->1.43782e+06
+
+
+48 50 52 54 56 58 60 62 64 66 
+A* costo: 66 time: 205.23
+IDA* costo: 66 time: 127.73
+Generados 209362055 nodos ->1.6391e+06
+
+
+31 35 37 39 41 43 45 
+A* costo: 45 time: 8.37
+IDA* costo: 45 time: 0.4
+Generados 635126 nodos ->1.58782e+06
+
+
+43 47 49 51 53 55 57 
+A* costo: 57 time: 5.75
+IDA* costo: 57 time: 12.82
+Generados 19890091 nodos ->1.55149e+06
+
+
+40 42 44 46 48 50 52 54 56 
+A* costo: 56 time: 32.39
+IDA* costo: 56 time: 7.46
+Generados 10820624 nodos ->1.45049e+06
+
+
+31 35 37 39 41 43 45 47 49 51 
+A* costo: 51 time: 25.3
+IDA* costo: 51 time: 14.08
+Generados 20169104 nodos ->1.43246e+06
+
+
+31 35 37 39 41 43 45 47 
+A* costo: 47 time: 2.05
+IDA* costo: 47 time: 1.53
+Generados 2277381 nodos ->1.48848e+06
+
+
+41 43 45 47 49 51 53 55 57 59 61 
+A* costo: 61 time: 197.49
+IDA* costo: 61 time: 162.69
+Generados 251664639 nodos ->1.5469e+06
+
+
+28 30 32 34 36 38 40 42 44 46 48 50 
+A* costo: 50 time: 32.15
+IDA* costo: 50 time: 31.4
+Generados 45094685 nodos ->1.43614e+06
+
+
+31 35 37 39 41 43 45 47 49 51 
+A* costo: 51 time: 12.54
+IDA* costo: 51 time: 4.83
+Generados 7107196 nodos ->1.47147e+06
+
+
+37 39 41 43 45 47 49 51 53 
+A* costo: 53 time: 3.37
+IDA* costo: 53 time: 5.56
+Generados 8028631 nodos ->1.444e+06
+
+
+30 34 36 38 40 42 44 46 48 50 52 
+A* costo: 52 time: 24.82
+IDA* costo: 52 time: 25.19
+Generados 36504711 nodos ->1.44917e+06
+
+
+30 34 36 38 40 42 44 
+A* costo: 44 time: 1.35
+IDA* costo: 44 time: 0.19
+Generados 281453 nodos ->1.48133e+06
+
+
+38 40 42 44 46 48 50 52 54 56 
+A* costo: 56 time: 45.62
+IDA* costo: 56 time: 50.2
+Generados 71201170 nodos ->1.41835e+06
+
+
+37 39 41 43 45 47 49 
+A* costo: 49 time: 2.78
+IDA* costo: 49 time: 0.33
+Generados 524982 nodos ->1.59085e+06
+
+
+46 48 50 52 54 56 
+A* costo: 56 time: 1.1
+IDA* costo: 56 time: 0.16
+Generados 252943 nodos ->1.58089e+06
+
+
+30 34 36 38 40 42 44 46 48 
+A* costo: 48 time: 5.4
+IDA* costo: 48 time: 6
+Generados 8638174 nodos ->1.4397e+06
+
+
+41 43 45 47 49 51 53 55 57 
+A* costo: 57 time: 22.99
+IDA* costo: 57 time: 61.25
+Generados 93590154 nodos ->1.528e+06
+
+
+34 36 38 40 42 44 46 48 50 52 54 
+A* costo: 54 time: 5.71
+IDA* costo: 54 time: 3.01
+Generados 4487731 nodos ->1.49094e+06
+
+
+41 43 45 47 49 51 53 
+A* costo: 53 time: 1.27
+IDA* costo: 53 time: 1.49
+Generados 2218300 nodos ->1.48879e+06
+
+
+28 32 34 36 38 40 42 
+A* costo: 42 time: 0.21
+IDA* costo: 42 time: 0.04
+Generados 67313 nodos ->1.68282e+06
+
+
+43 45 47 49 51 53 55 57 
+A* costo: 57 time: 19.28
+IDA* costo: 57 time: 25.41
+Generados 38247266 nodos ->1.50521e+06
+
+
+39 41 43 45 47 49 51 53 
+A* costo: 53 time: 1.66
+IDA* costo: 53 time: 1.1
+Generados 1714946 nodos ->1.55904e+06
+
+
+40 46 48 50 52 54 56 58 60 62 
+A* costo: 62 time: 403.15
+IDA* costo: 62 time: 293.39
+Generados 440427868 nodos ->1.50117e+06
+
+
+31 37 39 41 43 45 47 49 
+A* costo: 49 time: 15.93
+IDA* costo: 49 time: 0.65
+Generados 988912 nodos ->1.5214e+06
+
+
+37 41 43 45 47 49 51 53 55 
+A* costo: 55 time: 46.77
+IDA* costo: 55 time: 44.77
+Generados 65477460 nodos ->1.46253e+06
+
+
+32 34 36 38 40 42 44 
+A* costo: 44 time: 1.95
+IDA* costo: 44 time: 0.18
+Generados 262932 nodos ->1.46073e+06
+
+
+35 37 39 41 43 45 
+A* costo: 45 time: 0.15
+IDA* costo: 45 time: 0.08
+Generados 107366 nodos ->1.34208e+06
+
+
+34 36 38 40 42 44 46 48 50 52 
+A* costo: 52 time: 6.4
+IDA* costo: 52 time: 6.8
+Generados 10400748 nodos ->1.52952e+06
+
+
+43 47 49 51 53 55 57 59 61 63 65 
+A* costo: 65 time: 406.26
+IDA* costo: 65 time: 298.42
+Generados 450343399 nodos ->1.50909e+06
+
+
+38 40 42 44 46 48 50 52 54 
+A* costo: 54 time: 24.56
+IDA* costo: 54 time: 10.99
+Generados 16806599 nodos ->1.52926e+06
+
+
+36 40 42 44 46 48 50 
+A* costo: 50 time: 0.96
+IDA* costo: 50 time: 0.69
+Generados 1108286 nodos ->1.60621e+06
+
+
+41 43 45 47 49 51 53 55 57 
+A* costo: 57 time: 51.07
+IDA* costo: 57 time: 102.76
+Generados 158492158 nodos ->1.54235e+06
+
+
+37 39 41 43 45 47 49 51 53 55 57 
+A* costo: 57 time: 50.19
+IDA* costo: 57 time: 56.22
+Generados 83896205 nodos ->1.49228e+06
+
+
+34 36 38 40 42 44 46 
+A* costo: 46 time: 3.24
+IDA* costo: 46 time: 1.19
+Generados 1778103 nodos ->1.4942e+06
+
+
+45 47 49 51 53 
+A* costo: 53 time: 0.23
+IDA* costo: 53 time: 0.08
+Generados 131370 nodos ->1.64212e+06
+
+
+34 36 38 40 42 44 46 48 50 
+A* costo: 50 time: 3.94
+IDA* costo: 50 time: 2.74
+Generados 4084669 nodos ->1.49076e+06
+
+
+35 37 39 41 43 45 47 49 
+A* costo: 49 time: 1.13
+IDA* costo: 49 time: 0.49
+Generados 726037 nodos ->1.48171e+06
+
+
+32 36 38 40 42 44 
+A* costo: 44 time: 0.66
+IDA* costo: 44 time: 0.34
+Generados 487982 nodos ->1.43524e+06
+
+
+34 36 38 40 42 44 46 48 50 52 54 
+A* costo: 54 time: 51
+IDA* costo: 54 time: 22.98
+Generados 33002577 nodos ->1.43614e+06
+
+
+39 41 43 45 47 49 51 53 55 57 
+A* costo: 57 time: 20.07
+IDA* costo: 57 time: 16.05
+Generados 24829859 nodos ->1.54703e+06
+
+
+38 40 42 44 46 48 50 52 54 
+A* costo: 54 time: 19.71
+IDA* costo: 54 time: 6.79
+Generados 10386498 nodos ->1.52968e+06
+
