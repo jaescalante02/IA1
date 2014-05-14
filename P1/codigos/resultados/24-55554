@@ -1,0 +1,75 @@
+28
+28 30 32 IDA* costo: 32 time: 0
+Generados 2790 nodos ->inf
+34
+34 36 38 40 IDA* costo: 40 time: 0.09
+Generados 282924 nodos ->3.1436e+06
+40
+40 42 44 46 IDA* costo: 46 time: 0.34
+Generados 1069708 nodos ->3.1462e+06
+38
+38 40 42 IDA* costo: 42 time: 0.01
+Generados 31790 nodos ->3.179e+06
+43
+43 45 47 49 IDA* costo: 49 time: 1.32
+Generados 4075974 nodos ->3.08786e+06
+45
+45 47 49 51 IDA* costo: 51 time: 9.41
+Generados 28943462 nodos ->3.07582e+06
+23
+23 25 27 29 31 IDA* costo: 31 time: 0.37
+Generados 1094034 nodos ->2.95685e+06
+33
+33 35 37 39 41 43 IDA* costo: 43 time: 0.43
+Generados 1323971 nodos ->3.079e+06
+41
+41 43 45 47 49 51 IDA* costo: 51 time: 21.68
+Generados 64466588 nodos ->2.97355e+06
+29
+29 31 33 35 37 IDA* costo: 37 time: 0.81
+Generados 2551393 nodos ->3.14987e+06
+35
+35 37 39 41 43 45 47 IDA* costo: 47 time: 13.24
+Generados 40408963 nodos ->3.05204e+06
+49
+49 51 53 55 IDA* costo: 55 time: 10.19
+Generados 31953735 nodos ->3.13579e+06
+31
+31 33 35 37 IDA* costo: 37 time: 0.06
+Generados 187291 nodos ->3.12152e+06
+35
+35 37 39 41 43 IDA* costo: 43 time: 1.45
+Generados 4459171 nodos ->3.07529e+06
+29
+29 31 33 35 37 39 IDA* costo: 39 time: 16.01
+Generados 50408373 nodos ->3.14856e+06
+33
+33 35 37 39 IDA* costo: 39 time: 0.6
+Generados 1831816 nodos ->3.05303e+06
+21
+21 23 25 27 29 IDA* costo: 29 time: 0.2
+Generados 648370 nodos ->3.24185e+06
+31
+31 33 35 37 39 IDA* costo: 39 time: 0.15
+Generados 468436 nodos ->3.12291e+06
+31
+31 33 35 37 39 IDA* costo: 39 time: 0.44
+Generados 1364119 nodos ->3.10027e+06
+37
+37 39 41 43 45 47 IDA* costo: 47 time: 7.79
+Generados 24857866 nodos ->3.191e+06
+35
+35 37 39 41 43 IDA* costo: 43 time: 2.56
+Generados 7558719 nodos ->2.95262e+06
+29
+29 31 33 35 37 39 41 IDA* costo: 41 time: 119.81
+Generados 381467000 nodos ->3.18393e+06
+37
+37 39 41 43 IDA* costo: 43 time: 0.05
+Generados 186700 nodos ->3.734e+06
+19
+19 21 23 25 27 29 31 33 IDA* costo: 33 time: 62.1
+Generados 199822939 nodos ->3.21776e+06
+39
+39 41 43 45 IDA* costo: 45 time: 1.04
+Generados 3294986 nodos ->3.16826e+06
