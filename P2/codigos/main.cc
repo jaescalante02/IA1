@@ -21,10 +21,17 @@
 #include "othello_cut.h" // won't work correctly until .h is fixed!
 #include <iostream>
 
+const int PASOS = 10; //Define la cantidad de pasos a hacer por la variacion principal
+					  //para luego empezar a ejecutrar los algoritmos
+					  //Debe ser un numero par para que la proxima jugada sea
+					  //de las fichas negras que es con respecto a quien se 
+					  //calculan los algoritmos
+
 using namespace std;
 
 int main(int argc, const char **argv) {
-    state_t state;
+    state_t state,state2;
+	int cnt = PASOS;
     cout << "Principal variation:" << endl;
     for( int i = 0; PV[i] != -1; ++i ) {
         bool player = i % 2 == 0; // black moves first!
@@ -34,11 +41,15 @@ int main(int argc, const char **argv) {
              << " moves at pos = " << pos << (pos == 36 ? " (pass)" : "")
              << endl;
         state = state.move(player, pos);
+
+		if(cnt-->0) state2=state2.move(player,pos);
+
         cout << "Board after " << i+1 << (i == 0 ? " ply:" : " plies:") << endl;
     }
     cout << state;
     cout << "Value of the game = " << state.value() << endl;
     cout << "#bits per state = " << sizeof(state) * 8 << endl;
+	cout << state2 << endl;
 
     if( argc > 1 ) {
         int n = atoi(argv[1]);
