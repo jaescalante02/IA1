@@ -136,9 +136,19 @@ class state_t {
         return valid_moves.empty() ? -1 : valid_moves[lrand48() % valid_moves.size()];
     }
 
-	bool is_valid_move(bool color ,int pos){
-		return (color && is_black_move(pos)) || (!color && is_white_move(pos));
-	}
+    std::vector<int> valid_moves(bool color){
+        std::vector<int> moves;
+        for( int pos = 0; pos < DIM; ++pos ) {
+            if( (color && is_black_move(pos)) || (!color && is_white_move(pos)) ) {
+                moves.push_back(pos);
+            }
+        }
+        return moves;
+    }
+
+	  bool is_valid_move(bool color ,int pos){
+		  return (color && is_black_move(pos)) || (!color && is_white_move(pos));
+  	} 
 
     bool operator<(const state_t &s) const {
         return (free_ < s.free_) || ((free_ == s.free_) && (pos_ < s.pos_));

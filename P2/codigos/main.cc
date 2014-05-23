@@ -19,6 +19,7 @@
  */
 
 #include "othello_cut.h" // won't work correctly until .h is fixed!
+#include "minimax.h"
 #include <iostream>
 
 const int PASOS = 10; //Define la cantidad de pasos a hacer por la variacion principal
@@ -58,9 +59,14 @@ int main(int argc, const char **argv) {
         for( int i = 0; i < n; ++i ) {
             bool player = i % 2 == 0; // black moves first
             int pos = state.get_random_move(player);
+            cout << endl << "Minimax value " << minimax(state,4,player);
+            cout << " Negamax value " << negamax(state,4,player) << endl;
+            cout << state << endl;
             state = state.move(player, pos);
             cout << " " << pos;
         }
+        cout << endl << "Minimax value " << minimax(state,4,n%2==0);
+        cout << " Negamax value " << negamax(state,4,n%2==0) << endl;
         cout << endl << state;
     }
 
