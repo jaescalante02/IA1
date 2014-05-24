@@ -23,7 +23,7 @@
 #include "scout.h"
 #include <iostream>
 
-const int PASOS = 3; //Define el nivel desde las hojas de donde se 
+const int PASOS = 15; //Define el nivel desde las hojas de donde se 
 					 //va a empezar a ejecutar los algoritmos
 					  //Debe ser un numero par para que la proxima jugada sea
 					  //de las fichas negras que es con respecto a quien se 
@@ -33,10 +33,11 @@ using namespace std;
 
 int main(int argc, const char **argv) {
     state_t state,state2;
-	int cnt = 32-PASOS;
+	int cnt = 33-PASOS;
     cout << "Principal variation:" << endl;
+	bool player,player2;
     for( int i = 0; PV[i] != -1; ++i ) {
-        bool player = i % 2 == 0; // black moves first!
+        player = i % 2 == 0; // black moves first!
         int pos = PV[i];
         cout << state;
         cout << (player ? "Black" : "White")
@@ -48,6 +49,7 @@ int main(int argc, const char **argv) {
 
         cout << "Board after " << i+1 << (i == 0 ? " ply:" : " plies:") << endl;
     }
+	player2 = PASOS%2!=0;
     cout << state;
     cout << "Value of the game = " << state.value() << endl;
     cout << "#bits per state = " << sizeof(state) * 8 << endl;
@@ -60,28 +62,27 @@ int main(int argc, const char **argv) {
         state = state_t();
         for( int i = 0; i < n; ++i ) {
             bool player = i % 2 == 0; // black moves first
-            int pos = state.get_random_move(player);
-            cout << endl << "Minimax value " << minimax(state,PASOS,player);
-            cout << " Negamax value " << negamax(state,PASOS,player);
-            cout << " Alpha-Beta value " << alphabeta(state,PASOS,player) << endl;
+            int pos = state.get_random_move(player2);
+            cout << endl << "Minimax value " << minimax(state,PASOS,player2);
+            cout << " Negamax value " << negamax(state,PASOS,player2);
+            cout << " Alpha-Beta value " << alphabeta(state,PASOS,player2) << endl;
             cout << state << endl;
-            state = state.move(player, pos);
+            state = state.move(player2, pos);
             cout << " " << pos;
         }
         bool player = true;
-        cout << endl << "Minimax value " << minimax(state,PASOS,player);
-        cout << " Negamax value " << negamax(state2,PASOS,player);
-        cout << " Alpha-Beta value " << alphabeta(state2,PASOS,player) << endl;
-		cout << "scout value " << scout(state2,PASOS,player) << endl;
+        cout << endl << "Minimax value " << minimax(state,PASOS,player2);
+        cout << " Negamax value " << negamax(state2,PASOS,player2);
+        cout << " Alpha-Beta value " << alphabeta(state2,PASOS,player2) << endl;
+		cout << "scout value " << scout(state2,PASOS,player2) << endl;
         cout << endl << state;
     }
 */
-	bool player = true;
-     /*   cout << endl << "Minimax value " << minimax(state,PASOS,player);
-        cout << " Negamax value " << negamax(state2,PASOS,player);
-        cout << " Alpha-Beta value " << alphabeta(state2,PASOS,player) << endl;
-	*/	cout << "scout value " << scout(state2,PASOS,player) << endl;
-        cout << endl << state;
+     /*   cout << endl << "Minimax value " << minimax(state,PASOS,player2);
+        cout << " Negamax value " << negamax(state2,PASOS,player2);
+        cout << " Alpha-Beta value " << alphabeta(state2,PASOS,player2) << endl;
+	*/	
+	cout << "scout value " << scout(state2,PASOS,player2) << endl;
 
 
     return 0;
