@@ -7,7 +7,7 @@
 
 using namespace std; 
 
-int minimax_call(state_t node, int depth, bool maxPlayer){
+int minimax(state_t node, int depth, bool maxPlayer){
   if ((depth == 0) || (node.terminal())){
    return node.value();
   } 
@@ -15,13 +15,13 @@ int minimax_call(state_t node, int depth, bool maxPlayer){
   std::vector<int> moves = node.valid_moves(maxPlayer);
   state_t child; 
   if (moves.size() == 0) {
-    return minimax_call(node,depth-1,!maxPlayer); 
+    return minimax(node,depth-1,!maxPlayer); 
   }
   if (maxPlayer) { 
     bestValue = numeric_limits<int>::min(); 
     for(vector<int>::iterator it = moves.begin(); it != moves.end(); ++it) {
        child = node.move(maxPlayer,*it);
-       value = minimax_call(child,depth-1,false);
+       value = minimax(child,depth-1,false);
        bestValue = max(bestValue,value);
     }
     return bestValue;
@@ -30,7 +30,7 @@ int minimax_call(state_t node, int depth, bool maxPlayer){
     bestValue = numeric_limits<int>::max();
     for(vector<int>::iterator it = moves.begin(); it != moves.end(); ++it) {
        child = node.move(maxPlayer,*it);
-       value = minimax_call(child,depth-1,true);
+       value = minimax(child,depth-1,true);
        bestValue = min(bestValue,value);
     }
     return bestValue;
@@ -38,12 +38,9 @@ int minimax_call(state_t node, int depth, bool maxPlayer){
   
 }
 
-int minimax(state_t node, int depth, bool maxPlayer){
-  return (maxPlayer*2-1)*minimax_call(node,depth,maxPlayer);
-}
 
 
-int negamax(state_t node, int depth, bool maxPlayer){
+int negamax_call(state_t node, int depth, bool maxPlayer){
   if ((depth == 0) || (node.terminal())){
     return (maxPlayer*2-1)*node.value();
   }  
@@ -53,15 +50,22 @@ int negamax(state_t node, int depth, bool maxPlayer){
   moves = node.valid_moves(maxPlayer);
   state_t child; 
   if (moves.size() == 0) {
-    return minimax_call(node,depth-1,!maxPlayer); 
+    return -negamax_call(node,depth-1,!maxPlayer); 
   }
   for(vector<int>::iterator it = moves.begin(); it != moves.end(); ++it) {
      child = node.move(maxPlayer,*it);
-     value = -negamax(child,depth-1,!maxPlayer);
+     value = -negamax_call(child,depth-1,!maxPlayer);
      bestValue = max(bestValue,value);
   }
   return bestValue;
+} 
+
+int negamax(state_t node, int depth, bool maxPlayer){
+  return (maxPlayer*2-1)*negamax_call(node,depth,maxPlayer);
 }    
+
+
+   
 
 int alphabeta_call(state_t node, int depth, int alpha, int beta, bool maxPlayer){
   if ((depth == 0) || (node.terminal())){
@@ -71,7 +75,7 @@ int alphabeta_call(state_t node, int depth, int alpha, int beta, bool maxPlayer)
   std::vector<int> moves = node.valid_moves(maxPlayer);
   state_t child; 
   if (moves.size() == 0) {
-    return minimax_call(node,depth-1,!maxPlayer); 
+    return alphabeta_call(node,depth-1,alpha,beta,!maxPlayer); 
   }
   if (maxPlayer) { 
     for(vector<int>::iterator it = moves.begin(); it != moves.end(); ++it) {
@@ -103,7 +107,7 @@ int alphabeta(state_t node, int depth, bool maxPlayer){
   int min, max;
   min = numeric_limits<int>::min();
   max = numeric_limits<int>::max();
-  return (maxPlayer*2-1)*alphabeta_call(node, depth, min, max, maxPlayer);
+  return alphabeta_call(node, depth, min, max, maxPlayer);
 }
 
 
