@@ -23,7 +23,7 @@
 #include "scout.h"
 #include <iostream>
 
-const int PASOS = 15; //Define el nivel desde las hojas de donde se 
+const int PASOS = 8; //Define el nivel desde las hojas de donde se 
 					 //va a empezar a ejecutar los algoritmos
 					  //Debe ser un numero par para que la proxima jugada sea
 					  //de las fichas negras que es con respecto a quien se 
@@ -78,10 +78,10 @@ int main(int argc, const char **argv) {
         cout << endl << state;
     }
 */
-     /*   cout << endl << "Minimax value " << minimax(state,PASOS,player2);
-        cout << " Negamax value " << negamax(state2,PASOS,player2);
-        cout << " Alpha-Beta value " << alphabeta(state2,PASOS,player2) << endl;
-	*/	
+    cout << endl << "Minimax value " << minimax(state,PASOS,player2) << endl;
+    cout << "Negamax value " << negamax(state2,PASOS,player2) << endl;
+	cout << "Alpha-Beta value " << alphabeta(state2,PASOS,player2) << endl;
+	
 	cout << "scout value " << scout(state2,PASOS,player2) << endl;
 
 
