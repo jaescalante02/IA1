@@ -22,7 +22,7 @@
 #include "minimax.h"
 #include <iostream>
 
-const int PASOS = 10; //Define la cantidad de pasos a hacer por la variacion principal
+const int PASOS = 2; //Define la cantidad de pasos a hacer por la variacion principal
 					  //para luego empezar a ejecutrar los algoritmos
 					  //Debe ser un numero par para que la proxima jugada sea
 					  //de las fichas negras que es con respecto a quien se 
@@ -51,7 +51,8 @@ int main(int argc, const char **argv) {
     cout << "Value of the game = " << state.value() << endl;
     cout << "#bits per state = " << sizeof(state) * 8 << endl;
 	cout << state2 << endl;
-
+    
+    
     if( argc > 1 ) {
         int n = atoi(argv[1]);
         cout << endl << "Apply " << n << " random movements at empty board:";
@@ -59,14 +60,17 @@ int main(int argc, const char **argv) {
         for( int i = 0; i < n; ++i ) {
             bool player = i % 2 == 0; // black moves first
             int pos = state.get_random_move(player);
-            cout << endl << "Minimax value " << minimax(state,4,player);
-            cout << " Negamax value " << negamax(state,4,player) << endl;
+            cout << endl << "Minimax value " << minimax(state,PASOS,player);
+            cout << " Negamax value " << negamax(state,PASOS,player);
+            cout << " Alpha-Beta value " << alphabeta(state,PASOS,player) << endl;
             cout << state << endl;
             state = state.move(player, pos);
             cout << " " << pos;
         }
-        cout << endl << "Minimax value " << minimax(state,4,n%2==0);
-        cout << " Negamax value " << negamax(state,4,n%2==0) << endl;
+        bool player = n%2 == 0;
+        cout << endl << "Minimax value " << minimax(state,PASOS,player);
+        cout << " Negamax value " << negamax(state,PASOS,player);
+        cout << " Alpha-Beta value " << alphabeta(state,PASOS,player) << endl;
         cout << endl << state;
     }
 
