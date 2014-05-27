@@ -1,6 +1,6 @@
 all: othello othello_hash
 
-othello: main.cc minimax.h othello_cut.h scout.h
+othello: main.cc algorithms.h othello_cut.h 
 	g++ -std=gnu++0x -O3 main.cc -o othello
 	
 othello_hash: main_with_hash_table.cc othello_cut.h

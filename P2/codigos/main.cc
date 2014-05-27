@@ -19,22 +19,38 @@
  */
 
 #include "othello_cut.h" // won't work correctly until .h is fixed!
-#include "minimax.h"
-#include "scout.h"
+#include "algorithms.h"
 #include <iostream>
 
-const int PASOS = 8; //Define el nivel desde las hojas de donde se 
+const int PASOS = 5; //Define el nivel desde las hojas de donde se 
 					 //va a empezar a ejecutar los algoritmos
 					  //Debe ser un numero par para que la proxima jugada sea
 					  //de las fichas negras que es con respecto a quien se 
 					  //calculan los algoritmos
 
-using namespace std;
+const int DEPTH = 8; //Define la profundidad de los algoritmos
 
 int main(int argc, const char **argv) {
-    state_t state,state2;
-	int cnt = 33-PASOS;
-    cout << "Principal variation:" << endl;
+  
+  int cnt = PASOS;
+  int step;
+  int adepth,result;
+  clock_t time;
+  
+  //Console parameters.
+  if (argc > 2){
+    step = atoi(argv[1]);
+    adepth =atoi(argv[2]);
+  } else {
+    
+    step = cnt = PASOS;
+    adepth = DEPTH;
+  }
+  
+ 
+  state_t state,state2;
+	
+  cout << "Principal variation:" << endl;
 	bool player,player2;
     for( int i = 0; PV[i] != -1; ++i ) {
         player = i % 2 == 0; // black moves first!
@@ -45,45 +61,57 @@ int main(int argc, const char **argv) {
              << endl;
         state = state.move(player, pos);
 
-		if(cnt-->0) state2=state2.move(player,pos);
 
-        cout << "Board after " << i+1 << (i == 0 ? " ply:" : " plies:") << endl;
-    }
+        if(cnt ==0) break;
+		    if(cnt-->0) state2=state2.move(player,pos);
+
+         cout << "Board after " << i+1 << (i == 0 ? " ply:" : " plies:") << endl;
+        }
+        
+        
 	player2 = PASOS%2!=0;
-    cout << state;
-    cout << "Value of the game = " << state.value() << endl;
-    cout << "#bits per state = " << sizeof(state) * 8 << endl;
+  cout << state;
+  cout << "Value of the game = " << state.value() << endl;
+  cout << "#bits per state = " << sizeof(state) * 8 << endl;
 	cout << state2 << endl;
     
     
-    /*if( argc > 1 ) {
-        int n = atoi(argv[1]);
-        cout << endl << "Apply " << n << " random movements at empty board:";
-        state = state_t();
-        for( int i = 0; i < n; ++i ) {
-            bool player = i % 2 == 0; // black moves first
-            int pos = state.get_random_move(player2);
-            cout << endl << "Minimax value " << minimax(state,PASOS,player2);
-            cout << " Negamax value " << negamax(state,PASOS,player2);
-            cout << " Alpha-Beta value " << alphabeta(state,PASOS,player2) << endl;
-            cout << state << endl;
-            state = state.move(player2, pos);
-            cout << " " << pos;
-        }
-        bool player = true;
-        cout << endl << "Minimax value " << minimax(state,PASOS,player2);
-        cout << " Negamax value " << negamax(state2,PASOS,player2);
-        cout << " Alpha-Beta value " << alphabeta(state2,PASOS,player2) << endl;
-		cout << "scout value " << scout(state2,PASOS,player2) << endl;
-        cout << endl << state;
-    }
-*/
-    cout << endl << "Minimax value " << minimax(state,PASOS,player2) << endl;
-    cout << "Negamax value " << negamax(state2,PASOS,player2) << endl;
-	cout << "Alpha-Beta value " << alphabeta(state2,PASOS,player2) << endl;
-	
-	cout << "scout value " << scout(state2,PASOS,player2) << endl;
+  cout << "Step :" << step << " Depth: " << adepth << endl; 
 
+  time = clock();
+  cout << "Minimax value: " << minimax(state2,adepth,player2) << endl;
+  time = clock() - time;
+  cout << "Time :" << time/(double)CLOCKS_PER_SEC << "secs. ";
+  cout << "Gen "<< gen() << " nodes ->"<< gen()/(time/(double)CLOCKS_PER_SEC)<<endl;
+  genclean();
+  
+  time = clock();
+  cout << "Negamax value: " << negamax(state2,adepth,player2) << endl;
+  time = clock() - time;
+  cout << "Time :" << time/(double)CLOCKS_PER_SEC << "secs. ";
+  cout << "Gen "<< gen() << " nodes ->"<< gen()/(time/(double)CLOCKS_PER_SEC)<<endl;
+  genclean();
+  
+  time = clock();
+	cout << "Alpha-Beta value: " << alphabeta(state2,adepth,player2) << endl;
+	time = clock() - time;
+  cout << "Time :" << time/(double)CLOCKS_PER_SEC << "secs. ";
+  cout << "Gen "<< gen() << " nodes ->"<< gen()/(time/(double)CLOCKS_PER_SEC)<<endl;
+  genclean();
+  
+  time = clock();
+	cout << "Negamax with Alpha-Beta value: " << alphabeta(state2,adepth,player2) << endl;
+	time = clock() - time;
+  cout << "Time :" << time/(double)CLOCKS_PER_SEC << "secs. ";
+  cout << "Gen "<< gen() << " nodes ->"<< gen()/(time/(double)CLOCKS_PER_SEC)<<endl;
+  genclean();
+  
+  time = clock();
+	cout << "Scout value: " << scout(state2,adepth,player2) << endl;
+	time = clock() - time;
+  cout << "Time :" << time/(double)CLOCKS_PER_SEC << "secs. ";
+  cout << "Gen "<< gen() << " nodes ->"<< gen()/(time/(double)CLOCKS_PER_SEC)<<endl;
+  genclean();
 
     return 0;
 }
