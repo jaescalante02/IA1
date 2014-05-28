@@ -56,7 +56,7 @@ int alphabeta_call(state_t node, int depth, int alpha, int beta, bool maxPlayer)
   state_t child; 
   if (moves.size() == 0) {
     generated++;
-    return alphabeta_call(node,depth-1,alpha,beta,!maxPlayer); 
+    return alphabeta_call(node,depth,alpha,beta,!maxPlayer); 
   }
   if (maxPlayer) { 
     for(vector<int>::iterator it = moves.begin(); it != moves.end(); ++it) {
@@ -104,7 +104,7 @@ int negamax_call(state_t node, int depth, bool maxPlayer){
   state_t child; 
   if (moves.size() == 0) {
     generated++;
-    return -negamax_call(node,depth-1,!maxPlayer); 
+    return -negamax_call(node,depth,!maxPlayer); 
   }
   for(vector<int>::iterator it = moves.begin(); it != moves.end(); ++it) {
      generated++;
