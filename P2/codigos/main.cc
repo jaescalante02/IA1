@@ -22,13 +22,12 @@
 #include "algorithms.h"
 #include <iostream>
 
-const int PASOS = 5; //Define el nivel desde las hojas de donde se 
+const int PASOS = 26; //Define el nivel desde las hojas de donde se 
 					 //va a empezar a ejecutar los algoritmos
 					  //Debe ser un numero par para que la proxima jugada sea
 					  //de las fichas negras que es con respecto a quien se 
 					  //calculan los algoritmos
 
-const int DEPTH = 8; //Define la profundidad de los algoritmos
 
 int main(int argc, const char **argv) {
   
@@ -38,13 +37,14 @@ int main(int argc, const char **argv) {
   clock_t time;
   
   //Console parameters.
-  if (argc > 2){
-    step = atoi(argv[1]);
-    adepth =atoi(argv[2]);
+  if (argc > 1){
+    cnt = step = atoi(argv[1]);
+    adepth = 33 - step;
+    
   } else {
     
     step = cnt = PASOS;
-    adepth = DEPTH;
+    adepth = 33 - step;
   }
   
  
