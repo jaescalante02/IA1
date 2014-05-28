@@ -1,0 +1,170 @@
+
+############################################################################################################
+resultados					#	Pasos que faltan
+############################################################################################################
+
+Step :30 Depth: 3				
+Minimax value: -4				
+Time :0secs. Gen 5 nodes ->inf			
+Negamax value: -4					
+Time :0secs. Gen 5 nodes ->inf					3 (los siguientes se aumentan de 2 en 2)
+Alpha-Beta value: -4					
+Time :0secs. Gen 5 nodes ->inf			
+Negamax with Alpha-Beta value: -4		
+Time :0secs. Gen 5 nodes ->inf			
+Scout value: -4					
+Time :0secs. Gen 2 nodes ->inf			
+
+############################################################################################################
+
+Step :28 Depth: 5
+Minimax value: -4
+Time :0secs. Gen 13 nodes ->inf
+Negamax value: -4
+Time :0secs. Gen 13 nodes ->inf
+Alpha-Beta value: -4
+Time :0secs. Gen 13 nodes ->inf
+Negamax with Alpha-Beta value: -4
+Time :0secs. Gen 13 nodes ->inf
+Scout value: -4
+Time :0secs. Gen 9 nodes ->inf
+
+############################################################################################################
+
+Step :26 Depth: 7
+Minimax value: -4
+Time :0secs. Gen 174 nodes ->inf
+Negamax value: -4
+Time :0secs. Gen 174 nodes ->inf
+Alpha-Beta value: -4
+Time :0secs. Gen 80 nodes ->inf
+Negamax with Alpha-Beta value: -4
+Time :0secs. Gen 80 nodes ->inf
+Scout value: -4
+Time :0secs. Gen 67 nodes ->inf
+
+############################################################################################################
+
+Step :24 Depth: 9
+Minimax value: -4
+Time :0secs. Gen 4353 nodes ->inf
+Negamax value: -4
+Time :0secs. Gen 4353 nodes ->inf
+Alpha-Beta value: -4
+Time :0secs. Gen 990 nodes ->inf
+Negamax with Alpha-Beta value: -4
+Time :0secs. Gen 990 nodes ->inf
+Scout value: -4
+Time :0secs. Gen 1550 nodes ->inf
+
+############################################################################################################
+
+Step :22 Depth: 11
+Minimax value: -4
+Time :0.02secs. Gen 73445 nodes ->3.67225e+06
+Negamax value: -4
+Time :0.03secs. Gen 73445 nodes ->2.44817e+06
+Alpha-Beta value: -4
+Time :0secs. Gen 4149 nodes ->inf
+Negamax with Alpha-Beta value: -4
+Time :0secs. Gen 4149 nodes ->inf
+Scout value: -4
+Time :0secs. Gen 3832 nodes ->inf
+
+
+############################################################################################################
+
+Step :20 Depth: 13
+Minimax value: -4
+Time :1.08secs. Gen 3327475 nodes ->3.081e+06
+Negamax value: -4
+Time :1.08secs. Gen 3327475 nodes ->3.081e+06
+Alpha-Beta value: -4
+Time :0.04secs. Gen 97831 nodes ->2.44578e+06
+Negamax with Alpha-Beta value: -4
+Time :0.04secs. Gen 97831 nodes ->2.44578e+06
+Scout value: -4
+Time :0.03secs. Gen 74170 nodes ->2.47233e+06
+
+############################################################################################################
+
+Step :18 Depth: 15
+Minimax value: -4
+Time :27.24secs. Gen 85601844 nodes ->3.14251e+06
+Negamax value: -4
+Time :26.95secs. Gen 85601844 nodes ->3.17632e+06
+Alpha-Beta value: -4
+Time :0.1secs. Gen 260470 nodes ->2.6047e+06
+Negamax with Alpha-Beta value: -4
+Time :0.11secs. Gen 260470 nodes ->2.36791e+06
+Scout value: -4
+Time :0.13secs. Gen 304674 nodes ->2.34365e+06
+
+
+############################################################################################################
+
+Step :16 Depth: 17
+Alpha-Beta value: -4
+Time :0.88secs. Gen 2074971 nodes ->2.35792e+06
+Negamax with Alpha-Beta value: -4
+Time :0.87secs. Gen 2074971 nodes ->2.38502e+06
+Scout value: -4
+Time :0.58secs. Gen 1387259 nodes ->2.39183e+06
+
+
+
+############################################################################################################
+
+
+Step :14 Depth: 19
+Alpha-Beta value: -2
+Time :18.33secs. Gen 43227606 nodes ->2.3583e+06
+Negamax with Alpha-Beta value: -2
+Time :19.33secs. Gen 43227606 nodes ->2.2363e+06
+Scout value: -4
+Time :19.44secs. Gen 42564855 nodes ->2.18955e+06
+
+
+############################################################################################################
+
+
+Step :12 Depth: 21
+Alpha-Beta value: -2
+Time :184.47secs. Gen 410893990 nodes ->2.22743e+06
+Negamax with Alpha-Beta value: -2
+Time :186.73secs. Gen 410893990 nodes ->2.20047e+06
+Scout value: -4
+Time :157.84secs. Gen 323787340 nodes ->2.05136e+06
+
+
+############################################################################################################
+
+Step :10 Depth: 23
+Alpha-Beta value: -2
+Time :2739.28secs. Gen 6181062210 nodes ->2.25646e+06
+Negamax with Alpha-Beta value: -2
+Time :2628.06secs. Gen 6181062210 nodes ->2.35195e+06
+Scout value: -4
+Time :2200.03secs. Gen 5173234283 nodes ->2.35144e+06
+
+
+############################################################################################################
+
+
+
+############################################################################################################
+
+
+
+############################################################################################################
+
+
+
+############################################################################################################
+
+
+
+
+
+
+
