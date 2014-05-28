@@ -69,7 +69,7 @@ int main(int argc, const char **argv) {
         }
         
         
-	player2 = PASOS%2!=0;
+	player2 = (33-step)%2!=0;
   cout << state;
   cout << "Value of the game = " << state.value() << endl;
   cout << "#bits per state = " << sizeof(state) * 8 << endl;
