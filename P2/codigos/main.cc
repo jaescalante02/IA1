@@ -79,19 +79,19 @@ int main(int argc, const char **argv) {
   cout << "Step :" << step << " Depth: " << adepth << endl; 
 
   time = clock();
-  cout << "Negascout value: " << negascout(state2,adepth,player2) << endl;
+  cout << "Minimax value: " << minimax(state2,adepth,player2) << endl;
   time = clock() - time;
   cout << "Time :" << time/(double)CLOCKS_PER_SEC << "secs. ";
   cout << "Gen "<< gen() << " nodes ->"<< gen()/(time/(double)CLOCKS_PER_SEC)<<endl;
   genclean();
- /* 
+  
   time = clock();
   cout << "Negamax value: " << negamax(state2,adepth,player2) << endl;
   time = clock() - time;
   cout << "Time :" << time/(double)CLOCKS_PER_SEC << "secs. ";
   cout << "Gen "<< gen() << " nodes ->"<< gen()/(time/(double)CLOCKS_PER_SEC)<<endl;
   genclean();
- */
+ 
 
   time = clock();
 	cout << "Alpha-Beta value: " << alphabeta(state2,adepth,player2) << endl;
@@ -101,7 +101,7 @@ int main(int argc, const char **argv) {
   genclean();
   
   time = clock();
-	cout << "Negamax with Alpha-Beta value: " << alphabeta(state2,adepth,player2) << endl;
+	cout << "Negamax with Alpha-Beta value: " << negamax_alphabeta(state2,adepth,player2) << endl;
 	time = clock() - time;
   cout << "Time :" << time/(double)CLOCKS_PER_SEC << "secs. ";
   cout << "Gen "<< gen() << " nodes ->"<< gen()/(time/(double)CLOCKS_PER_SEC)<<endl;
@@ -111,6 +111,13 @@ int main(int argc, const char **argv) {
   time = clock();
 	cout << "Scout value: " << scout(state2,adepth,player2) << endl;
 	time = clock() - time;
+  cout << "Time :" << time/(double)CLOCKS_PER_SEC << "secs. ";
+  cout << "Gen "<< gen() << " nodes ->"<< gen()/(time/(double)CLOCKS_PER_SEC)<<endl;
+  genclean();
+
+  time = clock();
+  cout << "Negascout value: " << negascout(state2,adepth,player2) << endl;
+  time = clock() - time;
   cout << "Time :" << time/(double)CLOCKS_PER_SEC << "secs. ";
   cout << "Gen "<< gen() << " nodes ->"<< gen()/(time/(double)CLOCKS_PER_SEC)<<endl;
   genclean();
