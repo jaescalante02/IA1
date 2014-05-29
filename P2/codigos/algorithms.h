@@ -272,14 +272,54 @@ int negascout_call_g(state_t node, int depth, int alpha, int beta, bool maxp){
 }
 
 
+int negascout_call2(state_t node, int depth, int alpha, int beta, bool maxp){
+//cout<<"entra en g\n";
+	if(!depth || node.terminal()) return (maxp*2-1)*node.value();
+		
+	vector<int> v = node.valid_moves(maxp);
+	if(!v.size()) {
+	  generated++;
+	  //cout<<"caso g\n";
+	  return -negascout_call2(node,depth-1,-beta,-alpha,!maxp);
+	}
+	int m,n,a;
+	m=numeric_limits<int>::min();
+	n=beta;
+	state_t child;
+	for(int i=0;i<v.size();i++){
+	  generated++;
+	  child = node.move(maxp,v[i]);
+	  a = -max(alpha,m);
+	  int t = -negascout_call2(child,depth-1,-n,a,!maxp);
+	  if(t>m){
+	  
+	    if((depth<3)||(n==beta) || (t>=beta)) 
+	      m=t;
+	    else 
+	      m = -negascout_call2(child,depth-1,-beta,-t,!maxp);
+	  
+	  }
+	  if(m>=beta) return m;
+	  n = max(alpha,m) + 1;
+	
+	}
+
+  return m;
+
+}
+
+
+
 int negascout(state_t node, int depth, bool maxPlayer){
   int min, max;
-  min = numeric_limits<int>::min();
+  min = numeric_limits<int>::min()+1;
   max = numeric_limits<int>::max();
-  if (maxPlayer)
+  return (maxPlayer*2-1)*negascout_call2(node,depth,min,max,maxPlayer);
+/*  if (maxPlayer)
     return negascout_call_f(node, depth, min, max, true);
   else   
     return negascout_call_g(node, depth, min, max, false);
+***/
 }
 
 
