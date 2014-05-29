@@ -130,7 +130,7 @@ int negamax_alphabeta_call(state_t node, int depth, int alpha, int beta, bool ma
   state_t child; 
   if (moves.size() == 0) {
     generated++;
-    return -negamax_alphabeta_call(node,depth-1,-beta,-alpha,!maxPlayer);
+    return -negamax_alphabeta_call(node,depth,-beta,-alpha,!maxPlayer);
   }
   for(vector<int>::iterator it = moves.begin(); it != moves.end(); ++it) {
      generated++;
