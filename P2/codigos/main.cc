@@ -99,7 +99,7 @@ int main(int argc, const char **argv) {
   cout << "Time :" << time/(double)CLOCKS_PER_SEC << "secs. ";
   cout << "Gen "<< gen() << " nodes ->"<< gen()/(time/(double)CLOCKS_PER_SEC)<<endl;
   genclean();
-  
+ 
   time = clock();
 	cout << "Negamax with Alpha-Beta value: " << negamax_alphabeta(state2,adepth,player2) << endl;
 	time = clock() - time;
