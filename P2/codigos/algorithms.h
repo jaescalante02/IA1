@@ -116,7 +116,7 @@ int negamax_call(state_t node, int depth, bool maxPlayer){
 } 
 
 int negamax(state_t node, int depth, bool maxPlayer){
-  return negamax_call(node,depth,maxPlayer);
+  return -negamax_call(node,depth,maxPlayer);
 }   
 
 int negamax_alphabeta_call(state_t node, int depth, int alpha, int beta, bool maxPlayer){
@@ -150,7 +150,7 @@ int negamax_alphabeta(state_t node, int depth, bool maxPlayer){
   int min, max;
   min = numeric_limits<int>::min()+1;
   max = numeric_limits<int>::max();
-  return negamax_alphabeta_call(node,depth,min,max,maxPlayer);
+  return -negamax_alphabeta_call(node,depth,min,max,maxPlayer);
 }    
 
 //maxi es true si es un nodo de maximizacion y false si es de minimizacion
@@ -235,7 +235,7 @@ int negascout(state_t node, int depth, bool maxPlayer){
   int min, max;
   min = numeric_limits<int>::min()+1;
   max = numeric_limits<int>::max();
-  return (maxPlayer*2-1)*negascout_call(node,depth,min,max,maxPlayer);
+  return -negascout_call(node,depth,min,max,maxPlayer);
 }
 
 
