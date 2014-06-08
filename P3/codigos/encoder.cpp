@@ -83,6 +83,7 @@ void procesar(int x, int y){
 void computar(){
 	int i=0;
 	int cnt =0;
+//	cout << "tab = "<<tab <<endl;
 	for(int i=0;i<81;i++)
 		if(tab[i]!='.') cnt++;
 	fprintf(fpr2,"p cnf 729 %d\n",23409+cnt);
@@ -115,7 +116,7 @@ int main(int argc, char *args[]){
 	else fpr1 = stdin;
 	
 	init();
-	while(fgets(tab,100,fpr1)!=NULL);
+	while(fgets(tab,100,fpr1)!=NULL)
 		computar();
 	
 	fclose(fpr1);
