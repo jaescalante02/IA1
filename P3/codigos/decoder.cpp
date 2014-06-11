@@ -20,17 +20,19 @@ void add(int i){
 
 void process(){
   char s[20];
-  fgets(s,100,fpr1);
-  if (strcmp(s,"SAT\n") != 0){
+  //fgets(s,100,fpr1);
+  /*if (strcmp(s,"SAT\n") != 0){
     fprintf(fpr2,"%s", "unsatisfiable");
     exit(1);
-  }  
+  } */ 
   int input;
-  while (!feof (fpr1)){  
+  int i =0;
+  while ((i<729)&&(!feof (fpr1))){  
       fscanf (fpr1, "%d", &input);
       if (input == 0) break;
       //cout << input << endl;
-      if (input > 0) add(input);      
+      if (input > 0) add(input);
+      i++;     
   }
   
 }

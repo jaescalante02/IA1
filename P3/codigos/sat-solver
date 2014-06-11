@@ -1,0 +1,12 @@
+#! /bin/bash
+    
+  time while read line
+  do
+    echo $line > input
+    ./sudoku-encoder input middle
+    ./sat-zchaff middle | awk 'NR==6' | ./sudoku-decoder
+    echo
+  done < $1
+
+  rm -f input middle 
+
