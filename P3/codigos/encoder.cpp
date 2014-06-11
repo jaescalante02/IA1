@@ -43,7 +43,7 @@ void procesar(int x, int y){
 		}
 	//Prohibido tener mismos valores en la misma fila	
 	for(int i=0;i<9;i++){
-		for(int j=0;j<9;j++){
+		for(int j=0;j<y;j++){
 			if(j==y) continue;
 			
 			agregar_int(-valor(x,y,i+1));		
@@ -56,7 +56,7 @@ void procesar(int x, int y){
 
 	//Prohibido tener mismos valores en una misma columna
 	for(int i=0;i<9;i++){
-		for(int j=0;j<9;j++){
+		for(int j=0;j<x;j++){
 			if(j==x) continue;
 			agregar_int(-valor(x,y,i+1));		
 			agregar_int(-valor(j,y,i+1));
@@ -86,7 +86,7 @@ void computar(){
 //	cout << "tab = "<<tab <<endl;
 	for(int i=0;i<81;i++)
 		if(tab[i]!='.') cnt++;
-	fprintf(fpr2,"p cnf 729 %d\n",23409+cnt);
+	fprintf(fpr2,"p cnf 729 %d\n",17577+cnt);
 	while(i<81){
 		if(tab[i]!='.'){
 			int t2 = tab[i]-'0';
