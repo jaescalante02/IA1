@@ -1,0 +1,11 @@
+#! /bin/bash
+    
+  time while read line
+  do
+    echo $line > input
+    ./sudoku-encoder16 input middle
+    ./sat-zchaff middle | ./sudoku-decoder16
+  done < $1
+
+  rm -f input middle 
+
