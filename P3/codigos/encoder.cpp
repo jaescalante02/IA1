@@ -7,7 +7,7 @@ char tab[100];
 FILE *fpr1;
 FILE *fpr2;
 int vars[9][9][9];
-bool listo[9][9][9][9][9][9];
+//bool listo[9][9][9][9][9][9];
 
 int valor(int x, int y , int val){
 	return vars[x][y][val-1];
@@ -35,8 +35,8 @@ void procesar(int x, int y){
 	terminar_clausula();
 
 	for(int i=0;i<9;i++)
-		for(int j=0;j<9;j++){
-			if(i==j) continue;
+		for(int j=i+1;j<9;j++){
+			//if(i==j) continue;
 				
 			agregar_int(-valor(x,y,i+1));		
 			agregar_int(-valor(x,y,j+1));
@@ -74,12 +74,13 @@ void procesar(int x, int y){
 	for(int i=0;i<9;i++)
 		for(int j=0;j<3;j++)
 			for(int k=0;k<3;k++){
-				if(m+j==x && n+k==y) continue;
+				if(m+j>x || (m+j==x && n+k>=y)) continue;
 
-				if(listo[x][y][i][m+j][n+k][i]) continue;
-				if(listo[m+j][n+k][i][x][y][i]) continue;
+				//if(listo[x][y][i][m+j][n+k][i]) continue;
+				//if(listo[m+j][n+k][i][x][y][i]) continue;
 
-				listo[x][y][i][m+j][n+k][i] = listo[m+j][n+k][i][x][y][i] = true;
+				//listo[x][y][i][m+j][n+k][i] = listo[m+j][n+k][i][x][y][i] = true;
+
 				agregar_int(-valor(x,y,i+1));
 				agregar_int(-valor(m+j,n+k,i+1));
 				terminar_clausula();
@@ -124,7 +125,7 @@ int main(int argc, char *args[]){
 	
 	init();
 	while(fgets(tab,100,fpr1)!=NULL){
-		memset(listo,false,sizeof listo);
+//		memset(listo,false,sizeof listo);
 		computar();
 	}
 	
