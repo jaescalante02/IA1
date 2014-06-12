@@ -94,7 +94,7 @@ void computar(){
 //	cout << "tab = "<<tab <<endl;
 	for(int i=0;i<81;i++)
 		if(tab[i]!='.') cnt++;
-	fprintf(fpr2,"p cnf 729 %d\n",14661+cnt);
+	fprintf(fpr2,"p cnf 729 %d\n",11745+cnt);
 	while(i<81){
 		if(tab[i]!='.'){
 			int t2 = tab[i]-'0';
