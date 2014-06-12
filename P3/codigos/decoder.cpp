@@ -5,7 +5,7 @@
 #include <stdlib.h> 
 
 using namespace std;
-char tab[100];
+char tab[300];
 bool sat;
 FILE *fpr1;
 FILE *fpr2;
@@ -25,8 +25,10 @@ void process(){
     fprintf(fpr2,"%s", "unsatisfiable");
     exit(1);
   } */ 
+  tab[0]=0;
+  while(tab[0]!='I'){ fscanf (fpr1, " %[^\n]", tab);} 
   int input;
-  int i =0;
+  int i=0;
   while ((i<729)&&(!feof (fpr1))){  
       fscanf (fpr1, "%d", &input);
       if (input == 0) break;
@@ -41,14 +43,13 @@ void process(){
 int main(int argc, char *args[]){
 
 	
-	if(argc>2) fpr2 = fopen(args[2],"w");
-	else fpr2 = stdout;
+  fpr2 = stdout;
 
 	if(argc>1) fpr1 = fopen(args[1],"r");
 	else fpr1 = stdin;
-	
 	process();
-	
+
+	printf("\n");	
 	fclose(fpr1);
 	fclose(fpr2);
 

@@ -1,4 +1,7 @@
-all: sudoku-encoder sudoku-decoder zchaff-sat
+all: sudoku-encoder sudoku-decoder zchaff-sat solver
+
+solver:
+	g++ -O2 solver.cpp -o solver  
 
 sudoku-encoder:
 	g++ -O2 encoder.cpp -o sudoku-encoder
@@ -14,6 +17,6 @@ zchaff-sat:
 	
 clean:
 	rm -rf zchaff
-	rm -f *~ sat-zchaff sudoku-encoder sudoku-decoder 
+	rm -f *~ sat-zchaff sudoku-encoder sudoku-decoder solver
 	
 
