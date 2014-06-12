@@ -1,11 +1,13 @@
 #include<iostream>
 #include<cstdio>
 #include<string>
+#include<cstring>
 using namespace std;
 char tab[100];
 FILE *fpr1;
 FILE *fpr2;
 int vars[9][9][9];
+bool listo[9][9][9][9][9][9];
 
 int valor(int x, int y , int val){
 	return vars[x][y][val-1];
@@ -35,7 +37,7 @@ void procesar(int x, int y){
 	for(int i=0;i<9;i++)
 		for(int j=0;j<9;j++){
 			if(i==j) continue;
-	
+				
 			agregar_int(-valor(x,y,i+1));		
 			agregar_int(-valor(x,y,j+1));
 			terminar_clausula();
@@ -73,6 +75,11 @@ void procesar(int x, int y){
 		for(int j=0;j<3;j++)
 			for(int k=0;k<3;k++){
 				if(m+j==x && n+k==y) continue;
+
+				if(listo[x][y][i][m+j][n+k][i]) continue;
+				if(listo[m+j][n+k][i][x][y][i]) continue;
+
+				listo[x][y][i][m+j][n+k][i] = listo[m+j][n+k][i][x][y][i] = true;
 				agregar_int(-valor(x,y,i+1));
 				agregar_int(-valor(m+j,n+k,i+1));
 				terminar_clausula();
@@ -86,7 +93,7 @@ void computar(){
 //	cout << "tab = "<<tab <<endl;
 	for(int i=0;i<81;i++)
 		if(tab[i]!='.') cnt++;
-	fprintf(fpr2,"p cnf 729 %d\n",17577+cnt);
+	fprintf(fpr2,"p cnf 729 %d\n",14661+cnt);
 	while(i<81){
 		if(tab[i]!='.'){
 			int t2 = tab[i]-'0';
@@ -108,7 +115,7 @@ void init(){
 
 int main(int argc, char *args[]){
 
-	
+
 	if(argc>2) fpr2 = fopen(args[2],"w");
 	else fpr2 = stdout;
 
@@ -116,8 +123,10 @@ int main(int argc, char *args[]){
 	else fpr1 = stdin;
 	
 	init();
-	while(fgets(tab,100,fpr1)!=NULL)
+	while(fgets(tab,100,fpr1)!=NULL){
+		memset(listo,false,sizeof listo);
 		computar();
+	}
 	
 	fclose(fpr1);
 	fclose(fpr2);
