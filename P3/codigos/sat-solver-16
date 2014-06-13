@@ -1,11 +1,28 @@
 #! /bin/bash
-    
+TIMEFORMAT=%R
+ACUM2=0.0 
+CNT=0
+touch tempo1
+touch tempo2
+  echo "Tiempo total:"
+
   time while read line
   do
     echo $line > input
     ./sudoku-encoder16 input middle
-    ./sat-zchaff middle | ./sudoku-decoder16
+	X=`time (./sat-zchaff middle | ./sudoku-decoder16 > tempo1) 2>&1`
+	CNT=$[CNT+1]
+	ACUM2=`echo "$ACUM2 + $X" | bc`
+	cat tempo1 >> tempo2
+
   done < $1
 
-  rm -f input middle 
 
+  echo "Tiempo promedio:"
+  ACUM2=`echo "scale=3; $ACUM2 / $CNT" | bc`
+  echo $ACUM2
+
+  cat tempo2
+  rm -f input middle 
+  rm tempo1
+  rm tempo2
